@@ -48,6 +48,15 @@ PUT:
 
 ![](img/modelo_entidad_relacionDB.png)
 
+## Build With
+
+* Python - Programming language
+* Mysql - Databases
+
+## License
+
+Public Domain. No copy write protection.
+
 ## Authors
 Kevin Castro - [Github](https://github.com/KevinCastroP) / [Twitter](https://twitter.com/ccali_k)  
 Luis Herrera - [Github](https://github.com/lh1008) / [Twitter](https://twitter.com/lh1008)
