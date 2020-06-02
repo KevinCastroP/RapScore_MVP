@@ -24,26 +24,29 @@ PUT: Update users information
 * /users/id/profile/edit
 
 GET:
-/users/id/profile/bank-details
-/users/id/profile/investment
+* /users/id/profile/bank-details
+* /users/id/profile/investment
 
 GET: Return status for investors account.
-/users/id/profile/status
+* /users/id/profile/status
 
 PUT: Create a new application form
-/users/id/profile/requests
+* /users/id/profile/requests
 
 GET: Return form details
-/users/id/profile/requests/loan-details
+* /users/id/profile/requests/loan-details
 
 GET: Catch authentication and update credentials
-/signin
-/help/reset-login-password
-/signin/restore-password
+* /signin
+* /help/reset-login-password
+* /signin/restore-password
 
 PUT:
-/signin/restore-password/new
+* /signin/restore-password/new
 
+## Data Modeling
+
+![](img/modelo_entidad_relacionDB.png)
 
 ## Authors
 Kevin Castro - [Github](https://github.com/KevinCastroP) / [Twitter](https://twitter.com/ccali_k)  
