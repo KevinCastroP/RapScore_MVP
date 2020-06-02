@@ -14,34 +14,34 @@ This is our Portfolio Project, concluding our Foundations Year at Holberton Scho
 
 ## API and Methods
  
-<p>GET: Create a new user.</p>
-/signup/id
-
-<p>POST: Return accounts information.</p>
+<ul>GET: Create a new user.
+    <li>/signup/id</li>
+</ul>
+POST: Return accounts information.
 /users/id/profile
 
-<p>PUT: Update users information</p>
+PUT: Update users information
 /users/id/profile/edit
 
-<p>GET:</p>
+GET:
 /users/id/profile/bank-details
 /users/id/profile/investment
 
-<p>GET: Return status for investors account.</p>
+GET: Return status for investors account.
 /users/id/profile/status
 
-<p>PUT: Create a new application form</p>
+PUT: Create a new application form
 /users/id/profile/requests
 
-<p>GET: Return form details</p>
+GET: Return form details
 /users/id/profile/requests/loan-details
 
-<p>GET: Catch authentication and update credentials</p>
+GET: Catch authentication and update credentials
 /signin
 /help/reset-login-password
 /signin/restore-password
 
-<p>PUT:</p>
+PUT:
 /signin/restore-password/new
 
 
