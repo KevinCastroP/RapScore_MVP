@@ -14,7 +14,8 @@ This is our Portfolio Project, concluding our Foundations Year at Holberton Scho
 
 ## API and Methods
  
-<ul>GET: Create a new user.
+<ul>
+GET: Create a new user.
     <li>/signup/id</li>
 </ul>
 POST: Return accounts information.
