@@ -14,15 +14,14 @@ This is our Portfolio Project, concluding our Foundations Year at Holberton Scho
 
 ## API and Methods
  
-<ul>
 GET: Create a new user.
-    <li>/signup/id</li>
-</ul>
+* /signup/id
+
 POST: Return accounts information.
-/users/id/profile
+* /users/id/profile
 
 PUT: Update users information
-/users/id/profile/edit
+* /users/id/profile/edit
 
 GET:
 /users/id/profile/bank-details
