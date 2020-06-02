@@ -52,6 +52,9 @@ PUT:
 
 * Python - Programming language
 * Mysql - Databases
+* Javascript
+* HTML5
+* CSS
 
 ## License
 
