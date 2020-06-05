@@ -1,0 +1,15 @@
+body{
+    font-family: 'Merriweather', serif;
+}
+img {
+    display: block;
+    margin: auto;
+}
+button{
+    position:relative;
+    top:50%; 
+    left:40%;
+}
+header{
+    margin-top: 65px;
+}
