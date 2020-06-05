@@ -5,41 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RapScore MVP specification</title>
     <link rel="icon" type="image/png" href="../img/icon.png"/>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!-- bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- css style -->
+    <link rel="stylesheet" href="../style/main.css">
+    <!-- Scrollreveal JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
-<header>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container">
-            <a href="#" class="navbar-brand">RapScore</a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#firstNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="firstNavbar">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">about</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sing in</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contanct</a></li>
-                </ul>
+<body>
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a href="#" class="navbar-brand">RapScore</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#firstNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="firstNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sing in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Contanct</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
-<body> 
-    <p class="text-justify">
-        <img src="../img/investments.png" alt="CrediRap_investments"><br>
-        This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest in the loan system based on the worker's score and workers will have access to the loan depending on their performance. 
-    </p>
-    <p>
-        <h1>Do you need an account?</h1>
-        <img src="../img/worker.jpg" alt="an account worker"><br>
-        <button class="float-center">WORKER</button><br><br>
-        <img src="../img/investment.jpg" alt="an acco investment">
-        <button class="float-center">INVESTOR</button>
-    </p>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        </nav>
+        <header id="header">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="header-content-left">
+                            <p class="text-justify mt-2">
+                                This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest in the loan system based on the worker's score and workers will have access to the loan depending on their performance. 
+                            </p>
+                            <img src="../img/investments.png" alt="CrediRap_investments" style="width: 75%;">
+                            <p class="text-justify mt-2">
+                                This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest in the loan system based on the worker's score and workers will have access to the loan depending on their performance. 
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="header-content-right">
+                            <h1>Do you need an account?</h1>
+                            <img src="../img/worker.jpg" alt="an account worker" style="width: 63%;" class="mt-2">
+                            <button class="btn-info btn-lg mt-1 header-btn">WORKER</button><br>
+                            <img src="../img/investment.jpg" alt="an acco investment" style="width: 63%;" class="mt-4">
+                            <button class="btn-info btn-lg mt-1 header-btn">INVESTOR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script>
+            window.sr = ScrollReveal();
+            sr.reveal('.navbar', {
+            duration: 2000,
+            origin: 'bottom'
+            });
+            window.sr = ScrollReveal();
+            sr.reveal('.header-content-right', {
+            duration: 2000,
+            origin: 'top',
+            distance: '300px'
+            });
+            window.sr = ScrollReveal();
+            sr.reveal('.header-btn', {
+            duration: 2000,
+            origin: 'bottom',
+            delay: 1000
+            });
+        </script>
+    </section>
 </body>
 <footer>
 
