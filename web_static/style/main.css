@@ -1,5 +1,9 @@
 body{
     font-family: 'Merriweather', serif;
+    background: linear-gradient(#ffffff, #ece4e0)
+}
+nav{
+    background: linear-gradient(#faa873, #f54b10);
 }
 img {
     display: block;
@@ -11,5 +15,18 @@ button{
     left:40%;
 }
 header{
-    margin-top: 65px;
+    margin-top: 55px;
+    
+}
+footer {
+    background: linear-gradient(0.25turn, #f54b10, #faa873);
+}
+footer a{
+    color: honeydew;
+}
+.btn_css{
+    background: linear-gradient(0.25turn, #f54b10, #faa873);
+}
+.btn_css1{
+    margin-right: 6em;
 }
