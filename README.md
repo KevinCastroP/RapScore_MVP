@@ -46,7 +46,7 @@ PUT:
 
 ## Data Modeling
 
-![](img/modelo_entidad_relacionDB.png)
+![](web_static/img/modelo_entidad_relacionDB.png)
 
 ## Build With
 
