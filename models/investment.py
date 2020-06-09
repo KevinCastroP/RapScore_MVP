@@ -6,12 +6,14 @@ import models
 from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy import PrimaryKeyConstraint, Integer, DateTime, Float
+from sqlalchemy import Integer, DateTime, Float
 from models import investor
+from models.base_model import Base
 
 
-class Investment(BaseModel, Base):
+class Investment(Base):
     """Representation of Investment"""
+    __tablename__ = 'investment'
     id = Column(Integer(11), primary_key=True,
                 nullable=False, autoincrement=True)
     investor = Column(Integer(11), nullable=False, autoincrement=False,

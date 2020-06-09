@@ -5,12 +5,14 @@ Creating table User
 import models
 from datetime import datetime
 import sqlalchemy
-from sqlalchemy import Column, String, PrimaryKeyConstraint
+from sqlalchemy import Column, String
 from sqlalchemy import Integer, DateTime, Float
+from models.base_model import Base
 
 
-class User(BaseModel, Base):
+class User(Base):
     """Representation of user"""
+    __tablename__ = 'user'
     username = Column(String(50), primary_key=True,
                       nullable=False, autoincrement=False)
     email = Column(String(100), nullable=False)

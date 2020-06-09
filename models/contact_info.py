@@ -6,12 +6,14 @@ import models
 from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy import PrimaryKeyConstraint, Integer, DateTime
+from sqlalchemy import Integer, DateTime
 from models import person
+from models.base_model import Base
 
 
-class Contact_info(BaseModel, Base):
+class Contact_info(Base):
     """Representation of Contact info"""
+    __tablename__ = 'contact_info'
     person = Column(Integer(11), primary_key=True,
                     nullable=False, autoincrement=False,
                     ForeignKey('person.id'))

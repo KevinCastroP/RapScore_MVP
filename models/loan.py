@@ -6,12 +6,14 @@ import models
 from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy import PrimaryKeyConstraint, Integer, DateTime, Float
+from sqlalchemy import Integer, DateTime, Float
 from models import request
+from models.base_model import Base
 
 
-class Loan(BaseModel, Base):
+class Loan(Base):
     """Representation of loan"""
+    __tablename__ = 'loan'
     id = Column(Integer(11), primary_key=True,
                 nullable=False, autoincrement=True)
     number_request = Column(Integer(11), nullable=False,

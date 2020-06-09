@@ -5,12 +5,14 @@ Creating table Type loan
 import models
 from datetime import datetime
 import sqlalchemy
-from sqlalchemy import Column, String, PrimaryKeyConstraint
+from sqlalchemy import Column, String
 from sqlalchemy import Integer, DateTime, Float
+from models.base_model import Base
 
 
-class Type_loan(BaseModel, Base):
+class Type_loan(Base):
     """Representation of type loan"""
+    __tablename__ = 'type_loan'
     id = Column(Integer(11), primary_key=True,
                 nullable=False, autoincrement=True)
     description = Column(String(100), nullable=False)

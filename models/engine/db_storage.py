@@ -18,6 +18,8 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from models.base_model import Base
+
 
 classes = {"Address": Address, "Contact_info": Contact_info,
            "Request": Request, "Worker": Worker,
@@ -37,7 +39,6 @@ class DBStorage:
         MYSQL_PWD = getenv('MYSQL_PWD')
         MYSQL_HOST = getenv('MYSQL_HOST')
         MYSQL_DB = getenv('MYSQL_DB')
-        ENV = getenv('ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(MYSQL_USER,
                                              MYSQL_PWD,

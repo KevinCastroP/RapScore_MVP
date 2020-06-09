@@ -6,12 +6,14 @@ import models
 from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy import PrimaryKeyConstraint, Integer, DateTime, Float
+from sqlalchemy import Integer, DateTime, Float
 from models import person
+from models.base_model import Base
 
 
-class Worker(BaseModel, Base):
+class Worker(Base):
     """Representation of worker"""
+    __tablename__ = 'worker'
     worker = Column(Integer(11), primary_key=True,
                     nullable=False, autoincrement=False,
                     ForeignKey('person.id'))

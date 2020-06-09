@@ -6,11 +6,12 @@ import models
 from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy import PrimaryKeyConstraint, Integer, DateTime
+from sqlalchemy import Integer, DateTime
 from models import user
+from models.base_model import Base
 
 
-class Person(BaseModel, Base):
+class Person(Base):
     """Representation of Person"""
     __tablename__ = 'person'
     id = Column(Integer(11), primary_key=True,
