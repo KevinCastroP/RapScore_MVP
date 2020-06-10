@@ -7,7 +7,7 @@ from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime
-from models import user
+from models.user import User
 from models.base_model import Base
 
 
@@ -16,7 +16,7 @@ class Person(Base):
     __tablename__ = 'person'
     id = Column(Integer(11), primary_key=True,
                 nullable=False, autoincrement=True)
-    username = Column(String(50), nullable=True, ForeignKey('user.username'))
+    username = Column(String(50), nullable=False, ForeignKey('user.username'))
     type_id = Column(String(5), nullable=False)
     number_identification = Column(String(30), nullable=False)
     first_name = Column(String(50), nullable=False)

@@ -33,14 +33,15 @@ DROP TABLE IF EXISTS `address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `address` (
-  `id` int(3) NOT NULL,
+  `id` int(3) NOT NULL AUTO_INCREMENT,
   `person` int(11) NOT NULL,
   `address` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `observations` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`,`person`),
-  CONSTRAINT `address_FK` FOREIGN KEY (`id`) REFERENCES `person` (`id`)
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `address_FK` (`person`),
+  CONSTRAINT `address_FK` FOREIGN KEY (`person`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -65,8 +66,8 @@ CREATE TABLE `contact_info` (
   `type_contact` varchar(5) COLLATE utf8mb4_spanish_ci NOT NULL,
   `data_contact` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `description` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`person`,`type_contact`),
   CONSTRAINT `contact_info_FK` FOREIGN KEY (`person`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -95,10 +96,10 @@ CREATE TABLE `investment` (
   `term_in_months` int(5) NOT NULL,
   `rentability` float NOT NULL,
   `status` varchar(15) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `investment_date` datetime DEFAULT NULL,
+  `investment_date` datetime NOT NULL,
   `return_date` datetime NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `investment_FK` (`investor`),
   CONSTRAINT `investment_FK` FOREIGN KEY (`investor`) REFERENCES `investor` (`investor`)
@@ -126,9 +127,9 @@ CREATE TABLE `investor` (
   `bank_name` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `type_account` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `number_account` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `date_incorporation` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+  `date_incorporation` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`investor`),
   CONSTRAINT `investor_FK` FOREIGN KEY (`investor`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -156,9 +157,9 @@ CREATE TABLE `loan` (
   `amount_outlay` float NOT NULL,
   `term_in_months` int(5) NOT NULL,
   `interest_rate` float NOT NULL,
-  `outlay_date` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+  `outlay_date` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `loan_FK` (`number_request`),
   CONSTRAINT `loan_FK` FOREIGN KEY (`number_request`) REFERENCES `request` (`id`)
@@ -183,21 +184,21 @@ DROP TABLE IF EXISTS `person`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `username` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `type_id` varchar(5) COLLATE utf8mb4_spanish_ci NOT NULL,
   `number_identification` varchar(30) COLLATE utf8mb4_spanish_ci NOT NULL,
   `first_name` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `last_name` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `name_company` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `business_name` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `tradename` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `legal_status` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `legal_repre_type_id` varchar(5) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `legal_repre_number_id` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `legal_repre_full_name` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `born_date` datetime DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `name_company` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `business_name` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `tradename` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `legal_status` varchar(20) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `legal_repre_type_id` varchar(5) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `legal_repre_number_id` varchar(20) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `legal_repre_full_name` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `born_date` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `person_FK` (`username`),
   CONSTRAINT `person_FK` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
@@ -227,13 +228,14 @@ CREATE TABLE `request` (
   `status` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
   `type_loan` int(11) NOT NULL,
   `observations` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `request_date` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+  `request_date` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `request_FK` (`worker`),
+  KEY `request_FK_1` (`type_loan`),
   CONSTRAINT `request_FK` FOREIGN KEY (`worker`) REFERENCES `worker` (`worker`),
-  CONSTRAINT `request_FK_1` FOREIGN KEY (`id`) REFERENCES `type_loan` (`id`)
+  CONSTRAINT `request_FK_1` FOREIGN KEY (`type_loan`) REFERENCES `type_loan` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -262,8 +264,8 @@ CREATE TABLE `type_loan` (
   `interest_rate` float NOT NULL,
   `term_min` int(5) NOT NULL,
   `term_max` int(5) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -289,8 +291,8 @@ CREATE TABLE `user` (
   `email` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `psswd` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `status` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -315,9 +317,9 @@ CREATE TABLE `worker` (
   `worker` int(11) NOT NULL,
   `score` float NOT NULL,
   `type_vehicle` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `date_incorporation` datetime DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `date_incorporation` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`worker`),
   CONSTRAINT `worker_FK` FOREIGN KEY (`worker`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -349,4 +351,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-04  9:15:51
+-- Dump completed on 2020-06-09 22:06:16

@@ -18,6 +18,7 @@ class Investment(Base):
                 nullable=False, autoincrement=True)
     investor = Column(Integer(11), nullable=False, autoincrement=False,
                       ForeignKey('investor.investor'))
+    amount = Column(Float, nullable=False)
     term_in_months = Column(Integer(5), nullable=False)
     rentability = Column(Float, nullable=False)
     status = Column(String(15), nullable=False)
