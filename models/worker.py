@@ -7,7 +7,7 @@ from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime, Float
-from models import person
+from models.person import Person
 from models.base_model import Base
 
 

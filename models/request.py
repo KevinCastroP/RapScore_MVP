@@ -7,7 +7,8 @@ from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime, Float
-from models import worker, type_loan
+from models.worker import Worker
+from models.type_loan import Type_loan
 from models.base_model import Base
 
 
