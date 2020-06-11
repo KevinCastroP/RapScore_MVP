@@ -8,15 +8,15 @@ import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime
 from models.user import User
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
 
-class Person(Base):
+class Person(BaseModel, Base):
     """Representation of Person"""
     __tablename__ = 'person'
-    id = Column(Integer(11), primary_key=True,
-                nullable=False, autoincrement=True)
-    username = Column(String(50), nullable=False, ForeignKey('user.username'))
+    # id = Column(Integer, primary_key=True,
+    #             nullable=False, autoincrement=True)
+    user = Column(String(50), ForeignKey('user.username'), nullable=False)
     type_id = Column(String(5), nullable=False)
     number_identification = Column(String(30), nullable=False)
     first_name = Column(String(50), nullable=False)

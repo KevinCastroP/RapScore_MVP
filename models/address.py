@@ -8,15 +8,15 @@ import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime
 from models.person import Person
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
-class Address(Base):
+
+class Address(BaseModel, Base):
     """Representation of Address"""
     __tablename__ = 'address'
-    id = Column(Integer(3), primary_key=True,
+    id = Column(Integer, primary_key=True,
                 nullable=False, autoincrement=True)
-    person = Column(Integer(11), nullable=False, autoincrement=False,
-                    ForeignKey("person.id"))
+    person = Column(Integer, ForeignKey("person.id"), nullable=False, autoincrement=False)
     address = Column(String(100), nullable=True)
     observations = Column(String(100), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)

@@ -7,14 +7,13 @@ from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String
 from sqlalchemy import Integer, DateTime, Float
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
 
-class User(Base):
+class User(BaseModel, Base):
     """Representation of user"""
     __tablename__ = 'user'
-    username = Column(String(50), primary_key=True,
-                      nullable=False, autoincrement=False)
+    username = Column(String(50), nullable=False)
     email = Column(String(100), nullable=False)
     psswd = Column(String(50), nullable=False)
     status = Column(String(50), nullable=False)

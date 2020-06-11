@@ -8,18 +8,17 @@ import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime, Float
 from models.request import Request
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
 
-class Loan(Base):
+class Loan(BaseModel, Base):
     """Representation of loan"""
     __tablename__ = 'loan'
-    id = Column(Integer(11), primary_key=True,
+    id = Column(Integer, primary_key=True,
                 nullable=False, autoincrement=True)
-    number_request = Column(Integer(11), nullable=False,
-                            ForeignKey('request.id'))
+    number_request = Column(Integer, ForeignKey('request.id'), nullable=False)
     amount_outlay = Column(Float, nullable=False)
-    term_in_months = Column(Integer(5), nullable=False)
+    term_in_months = Column(Integer, nullable=False)
     interest_rate = Column(Float, nullable=False)
     outlay_date = Column(DateTime, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)

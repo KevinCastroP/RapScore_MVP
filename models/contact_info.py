@@ -8,15 +8,14 @@ import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime
 from models.person import Person
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
 
-class Contact_info(Base):
+class Contact_info(BaseModel, Base):
     """Representation of Contact info"""
     __tablename__ = 'contact_info'
-    person = Column(Integer(11), primary_key=True,
-                    nullable=False, autoincrement=False,
-                    ForeignKey('person.id'))
+    person = Column(Integer, ForeignKey('person.id'), primary_key=True,
+                    nullable=False, autoincrement=False)
     type_contact = Column(String(5), primary_key=True,
                           nullable=False, autoincrement=False)
     data_contact = Column(String(50), nullable=False)
