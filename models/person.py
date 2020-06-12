@@ -14,9 +14,7 @@ from models.base_model import BaseModel, Base
 class Person(BaseModel, Base):
     """Representation of Person"""
     __tablename__ = 'person'
-    # id = Column(Integer, primary_key=True,
-    #             nullable=False, autoincrement=True)
-    user = Column(String(50), ForeignKey('user.username'), nullable=False)
+    user = Column(String(60), ForeignKey('user.id'), nullable=False)
     type_id = Column(String(5), nullable=False)
     number_identification = Column(String(30), nullable=False)
     first_name = Column(String(50), nullable=False)

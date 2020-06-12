@@ -14,9 +14,9 @@ from models.base_model import BaseModel, Base
 class Loan(BaseModel, Base):
     """Representation of loan"""
     __tablename__ = 'loan'
-    id = Column(Integer, primary_key=True,
-                nullable=False, autoincrement=True)
-    number_request = Column(Integer, ForeignKey('request.id'), nullable=False)
+    # id = Column(Integer, primary_key=True,
+    #             nullable=False, autoincrement=True)
+    number_request = Column(String(60), ForeignKey('request.id'), nullable=False)
     amount_outlay = Column(Float, nullable=False)
     term_in_months = Column(Integer, nullable=False)
     interest_rate = Column(Float, nullable=False)

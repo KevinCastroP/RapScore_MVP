@@ -14,8 +14,8 @@ from models.base_model import BaseModel, Base
 class Worker(BaseModel, Base):
     """Representation of worker"""
     __tablename__ = 'worker'
-    worker = Column(Integer, ForeignKey('person.id'), primary_key=True,
-                    nullable=False, autoincrement=False)
+    worker = Column(String(60), ForeignKey('person.id'),
+                    nullable=False)
     score = Column(Float, nullable=False)
     type_vehicle = Column(String(50), nullable=True)
     date_incorporation = Column(DateTime, nullable=False)

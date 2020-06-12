@@ -11,9 +11,9 @@ from models.investment import Investment
 from models.investor import Investor
 from models.loan import Loan
 from models.person import Person
-from models.request import Request
-from models.type_loan import Type_loan
 from models.worker import Worker
+from models.type_loan import Type_loan
+from models.request import Request
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine

@@ -14,7 +14,7 @@ from models.base_model import BaseModel, Base
 class Contact_info(BaseModel, Base):
     """Representation of Contact info"""
     __tablename__ = 'contact_info'
-    person = Column(Integer, ForeignKey('person.id'), primary_key=True,
+    person = Column(String(60), ForeignKey('person.id'),
                     nullable=False, autoincrement=False)
     type_contact = Column(String(5), primary_key=True,
                           nullable=False, autoincrement=False)

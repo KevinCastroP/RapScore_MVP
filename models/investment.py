@@ -14,9 +14,9 @@ from models.base_model import BaseModel, Base
 class Investment(BaseModel, Base):
     """Representation of Investment"""
     __tablename__ = 'investment'
-    id = Column(Integer, primary_key=True,
-                nullable=False, autoincrement=True)
-    investor = Column(Integer, ForeignKey('investor.investor'), nullable=False, autoincrement=False)
+    # id = Column(Integer, primary_key=True,
+    #             nullable=False, autoincrement=True)
+    investor = Column(String(60), ForeignKey('investor.id'), nullable=False, autoincrement=False)
     amount = Column(Float, nullable=False)
     term_in_months = Column(Integer, nullable=False)
     rentability = Column(Float, nullable=False)

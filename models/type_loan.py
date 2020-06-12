@@ -13,8 +13,8 @@ from models.base_model import BaseModel, Base
 class Type_loan(BaseModel, Base):
     """Representation of type loan"""
     __tablename__ = 'type_loan'
-    id = Column(Integer, primary_key=True,
-                nullable=False, autoincrement=True)
+    # id = Column(Integer, primary_key=True,
+    #             nullable=False, autoincrement=True)
     description = Column(String(100), nullable=False)
     amount_min = Column(Float, nullable=False)
     amount_max = Column(Float, nullable=False)

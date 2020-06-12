@@ -5,6 +5,7 @@ Listing all objects from State table
 
 
 if __name__ == '__main__':
+    import json
     from sys import argv
     from models.base_model import BaseModel, Base
     from sqlalchemy import (create_engine)
@@ -27,7 +28,7 @@ if __name__ == '__main__':
 
 
     Base = declarative_base()
- 
+    
     engine = create_engine(
         'mysql+mysqldb://{}:{}@{}/{}'.format(
             argv[1], argv[2], argv[3], argv[4]),
@@ -36,21 +37,86 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    obj = User()
-    obj.username = "crazyD"
-    obj.email = "hanibal@pepito.com"
-    obj.psswd = "123bitch"
-    obj.status = "active"
-    session.add(obj)
-    session.commit()
     session.close()
-    # test for user table
+    # creating a new user
+    # obj = User()
+    # obj.username = "crazyD"
+    # obj.email = "hanibal@pepito.com"
+    # obj.psswd = "123bitch"
+    # obj.status = "active"
+    # session.add(obj)
+    # session.commit()
+    # session.close()
+    
+    # test user table (delete, show, quit, create)
+    # while True:
+    #     for user in session.query(User).all():
+    #         print("{} {}".format(user.id, user.username))
+    #     option = input("select an option\n c: create, s: show, d: delete, q: quit\n-> ")
+    #
+    #     if option == "c":
+    #         obj = User()
+    #         obj.username = "crazyD"
+    #         obj.email = "hanibal@pepito.com"
+    #         obj.psswd = "123bitch"
+    #         obj.status = "active"
+    #         session.add(obj)
+    #         session.commit()
+    #     elif option == "s":
+    #         uId = input("type the id: ")
+    #         users = session.query(User).filter_by(id = uId).all()
+    #         print(json.dumps(users[0].to_dict(), indent=2))
+    #     elif option == "d":
+    #         uId = input("type the id: ")
+    #         users = session.query(User).filter_by(id = uId).all()
+    #         session.delete(users[0])
+    #         session.commit()
+    #     elif option == "q":
+    #         break
+    # session.close()
+
+    # test person table (delete, show, quit, create)
+    # while True:
+    #     print("Users")
+    #     print([us.id for us in session.query(User).all()])
+    #     print("=================================================")
+    #     print("Persons")
+    #     print([(pe.id, pe.first_name, pe.last_name) for pe in session.query(Person).all()])
+    #     option = input("select an option\n c: create, s: show, d: delete, q: quit\n-> ")
+       
+    #     if option == "c":
+    #         obj = Person()
+    #         user = input("type the user Id: ")
+    #         obj.user = user
+    #         obj.type_id = "cc"
+    #         obj.number_identification = "1106893268"
+    #         obj.first_name = "Kevin"
+    #         obj.last_name = "Castro"
+    #         obj.born_date = "1991-09-12"
+    #         session.add(obj)
+    #         session.commit()
+    #     elif option == "s":
+    #         uId = input("type the id: ")
+    #         users = session.query(Person).filter_by(id = uId).all()
+    #         print(json.dumps(users[0].to_dict(), indent=2))
+    #     elif option == "d":
+    #         uId = input("type the id: ")
+    #         users = session.query(Person).filter_by(id = uId).all()
+    #         session.delete(users[0])
+    #         session.commit()
+    #     elif option == "q":
+    #         break
+    # session.close()
+
+    # test for show user table
     # for count in session.query(User).order_by(User.username).all():
     #     print("{} {} {} {} {} {}".format(count.username, count.email, count.psswd, count.status,
     #                                      count.created_at, count.updated_at))
+    #     session.delete(count)
+    # session.commit()
     # session.close()
 
-    #test for person table
+    #test for show person table
     # for count in session.query(Person).order_by(Person.id).all():
     #     print("{} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {}".format(count.id, count.username, count.type_id, count.number_identification,
     #                                                                    count.first_name, count.last_name, count.name_company,
