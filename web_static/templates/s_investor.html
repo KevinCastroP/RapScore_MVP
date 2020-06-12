@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RapScore MVP specification</title>
-    <link rel="icon" type="image/png" href="../img/icon.png"/>
+    <link rel="icon" type="image/png" href="/static/images/icon.png?{{ id }}"/>
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <!-- bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- css style -->
-    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="/static/styles/main.css?{{ id }}">
     <!-- Scrollreveal JS -->
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -24,9 +24,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="firstNavbar">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Sign In</a></li>
-                        <li class="nav-item"><a class="nav-link" href="s_investor.html#developed_dy">Contanct</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/signup/id#developed_dy">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-3">
                         <div class="header-content-left">
-                            <img src="../img/investments.png" alt="CrediRap_investments" style="width: 75%;">
+                            <img src="/static/images/investments.png?{{ id }}" alt="CrediRap_investments" style="width: 75%;">
                             <p class="text-justify mt-2">
                                 This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest in the loan system based on the worker's score and workers will have access to the loan depending on their performance. 
                             </p>
@@ -44,14 +44,14 @@
                     </div>
                     <div class="col mt-2 content-right">
                         <h1 class="text-center">Sign Up</h1>
-                        <img src="../img/group_persons.png" class="mt-4" alt="group persons" style="width: 30%;">
+                        <img src="/static/images/group_persons.png?{{ id }}" class="mt-4" alt="group persons" style="width: 30%;">
                         <div class="float-left">
-                            <button type="button" onclick="location.href='./signup_naturalperson.html'" class="btn-light btn-lg btn_css">Enter like natural person</button>
+                            <button type="button" onclick="location.href='/users/id'" class="btn-light btn-lg btn_css">Person</button>
                         </div>
                         <div class="float-left">
-                            <img src="../img/company.png" alt="company" class="mt-5" style="width: 30%;">
+                            <img src="/static/images/company.png?{{ id }}" alt="company" class="mt-5" style="width: 30%;">
                         <div class="float-left">
-                            <button type="button" onclick="location.href='./signup_company.html'" class="btn-light btn-lg btn_css btn_css btn_css1">Enter like company</button><br><br>
+                            <button type="button" onclick="location.href='/users/id-company'" class="btn-light btn-lg btn_css btn_css btn_css1">Company</button><br><br>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <img src="../img/logo_rappi.png" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
+                        <img src="/static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
                     </div>
                     <div class="col">
                         <p class="text-center mt-4 float-left">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <img src="../img/logo_holbeton.png" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
+                        <img src="/static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
                     </div>
                 </div>
             </div>
