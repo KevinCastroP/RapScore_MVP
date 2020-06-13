@@ -156,11 +156,11 @@ if __name__ == '__main__':
     #         obj = Investment()
     #         inv = input("type the investor Id: ")
     #         obj.investor = inv
-    #         obj.amount = 2000
-    #         obj.term_in_months = 6
+    #         obj.amount = 5000
+    #         obj.term_in_months = 8
     #         obj.rentability = 2.05
     #         obj.status = "vigente"
-    #         obj.investment_date = "2020-06-12"
+    #         obj.investment_date = "2020-06-13"
     #         obj.return_date = "2020-12-12"
     #         session.add(obj)
     #         session.commit()
