@@ -7,7 +7,7 @@ from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime, Float
-from models import request
+from models.request import Request
 from models.base_model import Base
 
 
