@@ -31,7 +31,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup">Sign In</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#developed_dy">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home#developed_dy">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="./tests">tests</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile-worker">perfil worker</a></li>
                 </ul>
@@ -49,7 +49,7 @@
                 <!-- columna izquierda -->
                 <div class="col-md-6 mt-4">
                     <div class="header-content-left">
-                        <img src="/static/images/investments.png" alt="CrediRap_investments" style="width: 75%;">
+                        <img src="/static/images/investments.png?{{ id }}" alt="CrediRap_investments" style="width: 75%;">
                         <p class="text-justify mt-2">
                             This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest
                             in the loan system based on the worker's score and workers will have access to the loan depending on their performance.
@@ -62,10 +62,10 @@
                     <div class="header-content-right">
                         <h1>Do you need an account?</h1>
                         <!-- worker -->
-                        <img src="/static/images/worker.jpg" alt="an account worker" style="width: 63%;" class="mt-2">
+                        <img src="/static/images/worker.jpg?{{ id }}" alt="an account worker" style="width: 63%;" class="mt-2">
                         <button type="button" onclick="location.href='/signup/id-worker'" class="btn-light btn-lg mt-1 header-btn btn_css">WORKER</button><br>
                         <!-- investor -->
-                        <img src="/static/images/investment.jpg" alt="an acco investment" style="width: 63%;" class="mt-4">
+                        <img src="/static/images/investment.jpg?{{ id }}" alt="an acco investment" style="width: 63%;" class="mt-4">
                         <button type="button" onclick="location.href='/signup/id'" class="btn-light btn-lg mt-1 header-btn btn_css">INVESTOR</button><br><br>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img src="/static/images/logo_rappi.png" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
+                    <img src="/static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
                 </div>
                 <div class="col">
                     <p class="text-center mt-4 float-left">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <img src="/static/images/logo_holbeton.png" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
+                    <img src="/static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
                 </div>
             </div>
         </div>
