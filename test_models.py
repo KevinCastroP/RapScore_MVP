@@ -108,6 +108,75 @@ if __name__ == '__main__':
     #         break
     # session.close()
 
+    # test investor table (delete, show, quit, create)
+    # while True:
+    #     print("Users")
+    #     print([us.id for us in session.query(User).all()])
+    #     print("=================================================")
+    #     print("Persons")
+    #     print([(pe.id, pe.first_name, pe.last_name) for pe in session.query(Person).all()])
+    #     print("=================================================")
+    #     print("Investor")
+    #     print([(inv.id, inv.investor, inv.bank_name) for inv in session.query(Investor).all()])
+    #     option = input("select an option\n c: create, s: show, d: delete, q: quit\n-> ")
+       
+    #     if option == "c":
+    #         obj = Investor()
+    #         per = input("type the person Id: ")
+    #         obj.investor = per
+    #         obj.bank_name = "Bancolombia"
+    #         obj.type_account = "ahorros"
+    #         obj.number_account = "55555555555"
+    #         obj.date_incorporation = "2020-06-12"
+    #         session.add(obj)
+    #         session.commit()
+    #     elif option == "s":
+    #         uId = input("type the id: ")
+    #         users = session.query(Investor).filter_by(id = uId).all()
+    #         print(json.dumps(users[0].to_dict(), indent=2))
+    #     elif option == "d":
+    #         uId = input("type the id: ")
+    #         users = session.query(Investor).filter_by(id = uId).all()
+    #         session.delete(users[0])
+    #         session.commit()
+    #     elif option == "q":
+    #         break
+    # session.close()
+
+    # test investment table (delete, show, quit, create)
+    # while True:
+    #     print("Investor")
+    #     print([(inv.id, inv.investor, inv.bank_name) for inv in session.query(Investor).all()])
+    #     print("=================================================")
+    #     print("Investment")
+    #     print([(inve.id, inve.investor, inve.amount) for inve in session.query(Investment).all()])
+    #     option = input("select an option\n c: create, s: show, d: delete, q: quit\n-> ")
+
+    #     if option == "c":
+    #         obj = Investment()
+    #         inv = input("type the investor Id: ")
+    #         obj.investor = inv
+    #         obj.amount = 2000
+    #         obj.term_in_months = 6
+    #         obj.rentability = 2.05
+    #         obj.status = "vigente"
+    #         obj.investment_date = "2020-06-12"
+    #         obj.return_date = "2020-12-12"
+    #         session.add(obj)
+    #         session.commit()
+    #     elif option == "s":
+    #         uId = input("type the id: ")
+    #         users = session.query(Investment).filter_by(id = uId).all()
+    #         print(json.dumps(users[0].to_dict(), indent=2))
+    #     elif option == "d":
+    #         uId = input("type the id: ")
+    #         users = session.query(Investment).filter_by(id = uId).all()
+    #         session.delete(users[0])
+    #         session.commit()
+    #     elif option == "q":
+    #         break
+    # session.close()
+
     # test for show user table
     # for count in session.query(User).order_by(User.username).all():
     #     print("{} {} {} {} {} {}".format(count.username, count.email, count.psswd, count.status,

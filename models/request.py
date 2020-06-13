@@ -21,7 +21,7 @@ class Request(BaseModel, Base):
     type_loan = Column(String(60), ForeignKey('type_loan.id'), nullable=False)
     amount_request = Column(Float, nullable=False)
     status = Column(String(20), nullable=False)
-    observations = Column(String(100), nullable=False)
+    observations = Column(String(100), nullable=True)
     request_date = Column(DateTime, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)

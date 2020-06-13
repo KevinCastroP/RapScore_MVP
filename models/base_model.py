@@ -41,6 +41,16 @@ class BaseModel:
         time = "%d-%b-%Y (%H:%M:%S.%f)"
         if "born_date" in new_dict:
             new_dict["born_date"] = new_dict["born_date"].strftime(time)
+        if "investment_date" in new_dict:
+            new_dict["investment_date"] = new_dict["investment_date"].strftime(time)
+        if "return_date" in new_dict:
+            new_dict["return_date"] = new_dict["return_date"].strftime(time)
+        if "date_incorporation" in new_dict:
+            new_dict["date_incorporation"] = new_dict["date_incorporation"].strftime(time)
+        if "outlay_date" in new_dict:
+            new_dict["outlay_date"] = new_dict["outlay_date"].strftime(time)
+        if "request_date" in new_dict:
+            new_dict["request_date"] = new_dict["request_date"].strftime(time)
         if "created_at" in new_dict:
             new_dict["created_at"] = new_dict["created_at"].strftime(time)
         if "updated_at" in new_dict:
