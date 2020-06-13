@@ -4,21 +4,21 @@ Contains the class DBStorage
 """
 
 import models
+from models.user import User
 from models.address import Address
 from models.contact_info import Contact_info
 from models.investment import Investment
 from models.investor import Investor
 from models.loan import Loan
 from models.person import Person
-from models.request import Request
-from models.type_loan import Type_loan
-from models.user import User
 from models.worker import Worker
+from models.type_loan import Type_loan
+from models.request import Request
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
 
 classes = {"Address": Address, "Contact_info": Contact_info,

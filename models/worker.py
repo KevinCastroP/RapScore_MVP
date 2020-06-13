@@ -8,15 +8,14 @@ import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime, Float
 from models.person import Person
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
 
-class Worker(Base):
+class Worker(BaseModel, Base):
     """Representation of worker"""
     __tablename__ = 'worker'
-    worker = Column(Integer(11), primary_key=True,
-                    nullable=False, autoincrement=False,
-                    ForeignKey('person.id'))
+    worker = Column(String(60), ForeignKey('person.id'),
+                    nullable=False)
     score = Column(Float, nullable=False)
     type_vehicle = Column(String(50), nullable=True)
     date_incorporation = Column(DateTime, nullable=False)

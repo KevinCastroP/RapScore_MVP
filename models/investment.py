@@ -8,18 +8,17 @@ import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy import Integer, DateTime, Float
 from models import investor
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 
 
-class Investment(Base):
+class Investment(BaseModel, Base):
     """Representation of Investment"""
     __tablename__ = 'investment'
-    id = Column(Integer(11), primary_key=True,
-                nullable=False, autoincrement=True)
-    investor = Column(Integer(11), nullable=False, autoincrement=False,
-                      ForeignKey('investor.investor'))
+    # id = Column(Integer, primary_key=True,
+    #             nullable=False, autoincrement=True)
+    investor = Column(String(60), ForeignKey('investor.id'), nullable=False, autoincrement=False)
     amount = Column(Float, nullable=False)
-    term_in_months = Column(Integer(5), nullable=False)
+    term_in_months = Column(Integer, nullable=False)
     rentability = Column(Float, nullable=False)
     status = Column(String(15), nullable=False)
     investment_date = Column(DateTime, nullable=False)
