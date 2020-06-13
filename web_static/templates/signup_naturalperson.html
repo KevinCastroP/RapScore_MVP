@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ventana del navegador -->
     <title>RapScore MVP specification</title>
     <link rel="icon" type="image/png" href="/static/images/icon.png?{{ id }}"/>
     <!-- Google fonts -->
@@ -10,136 +12,185 @@
     <!-- bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- css style -->
-    <link rel="stylesheet" href="/static/styles/main.css?{{ id }}">
-    <!-- links of password -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/main.css?{{ id }}"/>
+    <!-- Scrollreveal JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- icon close para login -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
-<body>
-    <section>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <div class="container">
-                <h3 class="navbar-brand">RapScore</h3>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#firstNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="firstNavbar">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Sign In</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/users/id#developed_dy">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <header id="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mt-3">
-                        <div class="header-content-left">
-                            <img src="/static/images/investments.png?{{ id }}" alt="CrediRap_investments" style="width: 75%;">
-                            <p class="text-justify mt-2">
-                                This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest in the loan system based on the worker's score and workers will have access to the loan depending on their performance. 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col mt-4 content-right">
-                        <h1 class="text-center">Sign Up</h1>
-                        <form action="" class="card">
-                            <div class="card-body bg-light">
-                                <div class="form group">
-                                    <input type="text" placeholder="First Name" class="form-control">
-                                    <input type="text" placeholder="Last Name" class="form-control mt-1">
-                                    <div class="input-group">
-                                        <a class="form-control dropdown-toggle mt-1 col-md-3" href="#" id="typeIdDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type ID</a>
-                                          <div class="dropdown-menu" aria-labelledby="typeIdDropdownMenuLink">
-                                            <a class="dropdown-item" href="#">CC</a>
-                                            <a class="dropdown-item" href="#">CE</a>
-                                            <a class="dropdown-item" href="#">PA</a>
-                                          </div>
-                                        <input type="text" placeholder="Number ID" class="form-control mt-1 col-md-9">
-                                    </div>
-                                    <input type="date" placeholder="Birthdate" class="form-control mt-1">
 
-                                    <input type="text" placeholder="Username" class="form-control mt-1">
-                                    <input type="email" placeholder="Email" class="form-control mt-1">
-                                    <div class="input-group">
-                                        <input id="txtPassword" type="password" placeholder="Enter Password" Class="form-control mt-1 col-md-11">
-                                        <a id="show_password" class="btn btn-primary form-control mt-1 col-md-1" type="button" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></a>
-                                    </div>
-                                    <div class="form-group form-check mt-3 was-validated">
-                                        <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox" name="remember" required>I accept terms and conditions.
-                                          <div class="valid-feedback">Valid.</div>
-                                          <div class="invalid-feedback">Check this checkbox to continue.</div>
-                                        </label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div><br>
-        </header>
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <img src="/static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
-                    </div>
-                    <div class="col">
-                        <p class="text-center mt-4 float-left">
-                            RapScore is a collaborative project by <br><a href="https://www.holbertonschool.com/co" target="blank">Holberton School</a> & <a href="https://www.rappi.com.co/" target="blank">Rappi</a><br>
+<body>
+    <!-- Barra de navegacion fija -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+        <div class="container">
+            <h3 class="navbar-brand">RapScore</h3>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="firstNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="firstNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup">Sign In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/users/id-person#developed_dy">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- contenido de la pagina -->
+    <section class="mt-5">
+        <div class="container">  
+        
+            <!-- division de pagina por columnas -->
+            <div class="row">
+
+                <!-- columna izquierda -->
+                <div class="col-md-6 mt-4">
+                    <div class="header-content-left">
+                        <img src="/static/images/investments.png" alt="CrediRap_investments" style="width: 75%;">
+                        <p class="text-justify mt-2">
+                            This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest
+                            in the loan system based on the worker's score and workers will have access to the loan depending on their performance.
                         </p>
                     </div>
-                    <div class="col">
-                        <div class="float-right" id="developed_dy">
-                            <p>
-                                <h5 class="my-3">Developed by</h5>
-                                <a href="https://twitter.com/ccali_k" target="blank">Kevin Castro</a><br>
-                                <a href="https://twitter.com/lh1008" target="blank">Luis Herrera</a><br>
-                                <a href="https://twitter.com/JhonatanLegarda" target="blank">Jhonatan Legarda</a>
-                            </p>
+                </div>
+
+                <!-- columna derecha -->
+                <div class="col mt-4 content-right">
+                    <h1 class="text-center">Sign Up</h1>
+                    <form action="" class="card">
+                        <div class="card-body bg-light">
+                            <div class="form group">
+                                <input type="text" placeholder="First Name" class="form-control">
+                                <input type="text" placeholder="Last Name" class="form-control mt-1">
+                                <div class="input-group">
+                                    <a class="form-control dropdown-toggle mt-1 col-md-3" href="#" id="typeIdDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type ID</a>
+                                      <div class="dropdown-menu" aria-labelledby="typeIdDropdownMenuLink">
+                                        <a class="dropdown-item" href="#">CC</a>
+                                        <a class="dropdown-item" href="#">CE</a>
+                                        <a class="dropdown-item" href="#">PA</a>
+                                      </div>
+                                    <input type="text" placeholder="Number ID" class="form-control mt-1 col-md-9">
+                                </div>
+                                <input type="date" placeholder="Birthdate" class="form-control mt-1">
+
+                                <input type="text" placeholder="Username" class="form-control mt-1">
+                                <input type="email" placeholder="Email" class="form-control mt-1">
+                                <div class="input-group">
+                                    <input id="txtPassword" type="password" placeholder="Enter Password" Class="form-control mt-1 col-md-11">
+                                    <a id="show_password" class="btn btn-primary form-control mt-1 col-md-1" type="button" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></a>
+                                </div>
+                                <div class="form-group form-check mt-3 was-validated">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox" name="remember" required>I accept terms and conditions.
+                                      <div class="valid-feedback">Valid.</div>
+                                      <div class="invalid-feedback">Check this checkbox to continue.</div>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <img src="/static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
-                    </div>
+                    </form>
+                </div>    
+            </div> <!-- cierre div clase row -->
+            
+            <!-- ventana emergente de login -->
+            <div class="overlay" id="overlay">
+                <div class="popup" id="popup">
+                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+                    <h3>Sign In</h3>
+                    <h4>Welcome!</h4>
+                    <form action="">
+                        <div class="contenedor-inputs">
+                            <input type="email" placeholder="Email">
+                            <input type="password" placeholder="Password">
+                        </div>
+                        <input type="submit" class="btn-submit" value="DONE">
+                    </form>
                 </div>
             </div>
-        </footer>
-        <!-- Scrollreveal JS -->
-        <script src="https://unpkg.com/scrollreveal"></script>
-        <!-- animation jquery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
-            window.sr = ScrollReveal();
-            sr.reveal('.content-right', {
-            duration: 2000,
-            origin: 'right',
-            distance: '300px',
-            });
-            
-            function mostrarPassword(){
-                    var cambio = document.getElementById("txtPassword");
-		            if(cambio.type == "password"){
-			            cambio.type = "text";
-			            $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-		            }else{
-			            cambio.type = "password";
-			            $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-		            }
-                } 
-	            $(document).ready(function () {
-	            //CheckBox mostrar contraseña
-	            $('#ShowPassword').click(function () {
-		            $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
-	            });
-            });
-        </script>
-    </section>
+
+        </div> <!-- cierra div clase container -->
+    </section> <!-- cierre de setion "cuerpo" de la pagina -->
+    
+    <footer> <!-- footer (pie de  pagina) -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img src="/static/images/logo_rappi.png" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
+                </div>
+                <div class="col">
+                    <p class="text-center mt-4 float-left">
+                        RapScore is a collaborative project by <br><a href="https://www.holbertonschool.com/co" target="blank">Holberton School</a> & <a href="https://www.rappi.com.co/" target="blank">Rappi</a><br>
+                    </p>
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <p>
+                            <h5 class="my-3" id="developed_dy">Developed by</h5>
+                            <a href="https://twitter.com/ccali_k" target="blank">Kevin Castro</a><br>
+                            <a href="https://twitter.com/lh1008" target="blank">Luis Herrera</a><br>
+                            <a href="https://twitter.com/JhonatanLegarda" target="blank">Jhonatan Legarda</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="/static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--funciones y animacion js -->
+    <!-- menus desplegables son los 3 escripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+    /* funcion para login  */
+    var btnAbrirPopup = document.getElementById('btn-abrir-popup'),
+	    overlay = document.getElementById('overlay'),
+	    popup = document.getElementById('popup'),
+	    btnCerrarPopup = document.getElementById('btn-cerrar-popup');
+
+    btnAbrirPopup.addEventListener('click', function(){
+	    overlay.classList.add('active');
+	    popup.classList.add('active');
+    });
+
+    btnCerrarPopup.addEventListener('click', function(e){
+	    e.preventDefault();
+	    overlay.classList.remove('active');
+	    popup.classList.remove('active');
+    });
+
+    /* animacion js sign up*/
+    window.sr = ScrollReveal();
+        sr.reveal('.content-right', {
+        duration: 2000,
+        origin: 'right',
+        distance: '300px',
+    });
+
+    /* mostrar contraseña */ 
+    function mostrarPassword(){
+            var cambio = document.getElementById("txtPassword");
+	        if(cambio.type == "password"){
+	            cambio.type = "text";
+	            $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+	        }else{
+	            cambio.type = "password";
+	            $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+	            }
+            } 
+	    $(document).ready(function () {
+	    //CheckBox mostrar contraseña
+	    $('#ShowPassword').click(function () {
+	        $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+	    });
+    });
+    </script>
+
 </body>
 </html>

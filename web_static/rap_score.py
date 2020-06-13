@@ -29,15 +29,25 @@ def index():
     """ Display index """
     return render_template('index.html', id=str(uuid.uuid4()))
 
+@app.route('/signup/id-worker', strict_slashes=False)
+def id_worker():
+    """ Display tests """
+    return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
+
 @app.route('/signup/id', strict_slashes=False)
 def investor():
     """ Display investors options """
     return render_template('s_investor.html', id=str(uuid.uuid4()))
 
-@app.route('/users/id', strict_slashes=False)
+@app.route('/users/id-person', strict_slashes=False)
 def investor_person():
     """ Display investors subscription for a person """
     return render_template('signup_naturalperson.html', id=str(uuid.uuid4()))
+
+@app.route('/profile-worker', strict_slashes=False)
+def profile_worker():
+    """ Display investors subscription for a person """
+    return render_template('profile_worker.html', id=str(uuid.uuid4()))
 
 @app.route('/users/id-company', strict_slashes=False)
 def investor_company():
@@ -48,7 +58,7 @@ def investor_company():
 def tests():
     """ Display tests """
     return render_template('tests.html', id=str(uuid.uuid4()))
-
+  
 if __name__ == "__main__":
     """ Main Function """
     app.run(host='0.0.0.0', port=5000)
