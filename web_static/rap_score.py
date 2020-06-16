@@ -1,6 +1,7 @@
 #!/usr/bin/python3 Bash
 """ RapScore Flask rendering file """
 from flask import Flask, render_template, request
+from flask_mysqldb import MySQL
 from models.engine.db_storage import DBStorage
 from models.address import Address
 from models.contact_info import Contact_info
@@ -16,12 +17,13 @@ import uuid
 
 
 app = Flask(__name__)
+mysql = DBStorage()
 
 
 """ @app.teardown_appcontext
 def close_db(error):
      Remove SQLalchemy session 
-    storage.close() """
+    DBstorage.close() """
 
 @app.route('/')
 @app.route('/home', strict_slashes=False)
@@ -32,6 +34,23 @@ def index():
 @app.route('/signup/id-worker', strict_slashes=False, methods=['GET', 'POST'])
 def id_worker():
     """ Display tests """
+    if request.method == "POST":
+        info = request.form
+        obj = User()
+        obj.username = info['username']
+        obj.email = info['email']
+        obj.psswd = info['password']
+        data = Person()
+        data.first_name = info['fname']
+        data.last_name = info['lname']
+        data.type_id = info['typeID']
+        data.number_identification = info['numberID']
+        data.born_date = info['date']
+        cur = mysql.connection.cursor()
+        mysql.new(cur)
+        mysql.save()
+        mysql.close()
+        return 'success'
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
 @app.route('/signup/id', strict_slashes=False)
