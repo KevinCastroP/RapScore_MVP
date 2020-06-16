@@ -44,10 +44,53 @@ def investor_person():
     """ Display investors subscription for a person """
     return render_template('signup_naturalperson.html', id=str(uuid.uuid4()))
 
+# pagina principal del worker
 @app.route('/profile-worker', strict_slashes=False)
 def profile_worker():
     """ Display investors subscription for a person """
     return render_template('profile_worker.html', id=str(uuid.uuid4()))
+
+# pagina apply loan
+@app.route('/apply-loan', strict_slashes=False)
+def apply_loan():
+    """ Display investors subscription for a person """
+    return render_template('apply_loan.html', id=str(uuid.uuid4()))
+
+
+# pagina loan details
+@app.route('/loan-details', strict_slashes=False)
+def loan_details():
+    """ Display investors subscription for a person """
+    return render_template('loan_details.html', id=str(uuid.uuid4()))
+
+
+# pagina pricipal investor
+@app.route('/profile-investor', strict_slashes=False)
+def profile_investor():
+    """ Display investors subscription for a person """
+    return render_template('profile_investor.html', id=str(uuid.uuid4()))
+
+
+# edit porfile investor.
+@app.route('/edit-profile', strict_slashes=False)
+def edit_profile():
+    """ Display investors subscription for a person """
+    return render_template('edit_profile.html', id=str(uuid.uuid4()))
+
+
+# pagina investment investor.
+@app.route('/investment', strict_slashes=False)
+def investment():
+    """ Display investors subscription for a person """
+    return render_template('investment.html', id=str(uuid.uuid4()))
+
+
+# add bank details.
+@app.route('/bank-details', strict_slashes=False)
+def bank_details():
+    """ Display investors subscription for a person """
+    return render_template('bank_details.html', id=str(uuid.uuid4()))
+
 
 @app.route('/users/id-company', strict_slashes=False)
 def investor_company():

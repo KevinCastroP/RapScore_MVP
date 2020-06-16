@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ventana del navegador -->
+    <title>RapScore MVP specification</title>
+    <link rel="icon" type="image/png" href="../static/images/icon.png?{{ id }}"/>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!-- bootstrap style -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- css style -->
+    <link rel="stylesheet" href="../static/styles/main.css?{{ id }}"/>
+    <!-- icon close para editar perfil -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+
+<body>
+    <!-- Barra de navegacion fija -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+        <div class="container">
+            <h3 class="navbar-brand">RapScore</h3>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="firstNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="firstNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- contenido de la pagina -->
+    <section class="mt-5">
+        <div class="container">  
+        
+            <!-- division de pagina por columnas -->
+            <div class="row">
+
+                <!-- columna izquierda -->
+                <div class="col-md-4 mt-4">
+                    <div>
+                        <div class="b_status">
+                            <button type="button" onclick="location.href='/profile-investor'" class="btn-light btn-lg btn_css">Status</button><br>
+                        </div>
+                        <div class="b_profile">
+                            <button type="button" onclick="location.href='/edit-profile'" class="btn-light btn-lg btn_css">Edit profile</button><br>
+                        </div>
+                        <div class="b_investment">
+                            <button type="button" onclick="location.href='/investment'" class="btn-light btn-lg btn_css">investment</button><br>
+                        </div>
+                        <div class="b_bank">
+                            <button type="button" onclick="location.href='/bank-details'" class="btn-light btn-lg btn_css">Add bank details</button><br>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- columna derecha -->
+                <div class="col-md-8 mt-4">
+                    <div class="header-content-right">
+                        <h1 style="text-align: center;">Edit Proflie</h1>
+                        <form action="" class="card">
+                            <div class="card-body bg-light">
+                                <div class="form group">
+                                    <input type="text" placeholder="Number Phone" class="form-control">
+                                    <input type="text" placeholder="Address" class="form-control mt-1">
+                                    <input type="email" placeholder="Email" class="form-control mt-1">
+                                    <div class="input-group">
+                                        <input id="txtPassword" type="password" placeholder="Change Password" Class="form-control mt-1 col-md-11">
+                                        <a id="show_password" class="btn btn-primary form-control mt-1 col-md-1" type="button" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></a>
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="txtPassword" type="password" placeholder="Confirm Password" Class="form-control mt-1 col-md-11">
+                                        <a id="show_password" class="btn btn-primary form-control mt-1 col-md-1" type="button" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></a>
+                                    </div>
+                                    <button type="submit" class="btn-light btn-lg btn_css" style="margin-top: 20px; margin-left: 40%;">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div> <!-- cierre de heaer content right -->
+                </div> <!-- cierre columna derecha -->
+            </div> <!-- cierre div clase row -->
+        </div> <!-- cierra div clase container -->
+    </section> <!-- cierre de setion "cuerpo" de la pagina -->
+
+    <!-- footer (pie de  pagina) -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img src="../static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
+                </div>
+                <div class="col">
+                    <p class="text-center mt-4 float-left">
+                        RapScore is a collaborative project by <br><a href="https://www.holbertonschool.com/co" target="blank">Holberton School</a> & <a href="https://www.rappi.com.co/" target="blank">Rappi</a><br>
+                    </p>
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <p>
+                            <h5 class="my-3" id="developed_dy">Developed by</h5>
+                            <a href="https://twitter.com/ccali_k" target="blank">Kevin Castro</a><br>
+                            <a href="https://twitter.com/lh1008" target="blank">Luis Herrera</a><br>
+                            <a href="https://twitter.com/JhonatanLegarda" target="blank">Jhonatan Legarda</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="../static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
+                </div>
+            </div> <!-- cierre row -->
+        </div> <!-- Cierre container footer -->
+    </footer>
+
+    <!--funciones y animacion js -->
+    <script>
+
+    </script>
+
+</body>
+</html>

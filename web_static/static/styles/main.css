@@ -12,11 +12,15 @@ img {
     display: block;
     margin: auto;
 }
+
+/*
 button{
     position:relative;
     top:50%; 
     left:40%;
 }
+*/
+
 header{
     margin-top: 55px;
     
@@ -185,4 +189,58 @@ section .img_size{
 
 section .l_carousel{
 	color: rgb(0, 0, 0);
+}
+
+
+.percentage_table {
+	height: 324px;
+}
+
+.loandetails{
+	text-align: center;
+	margin-top: 100px;
+}
+
+.loandetails1{
+	margin-left: 25%;
+	width: 35em;
+	margin-bottom: 20px;
+}
+
+
+
+/*-----------------------------------------*/
+/*        pagina pricial investor          */
+/*-----------------------------------------*/
+/* botones */
+.b_status{
+	margin-top: 4em;
+	margin-left: 35%;
+}
+
+.b_profile{
+	margin-top: 3em;
+	margin-left: 28%;
+}
+
+.b_investment{
+	margin-top: 3em;
+	margin-left: 28%;
+}
+
+.b_bank{
+	margin-top: 3em;
+	margin-bottom: 4em;
+	margin-left: 22%;
+}
+
+/* caudro de status */
+.my-custom-scrollbar {
+	position: relative;
+	height: 360px;
+	overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+	display: block;
 }
