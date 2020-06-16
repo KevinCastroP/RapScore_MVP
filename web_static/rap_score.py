@@ -1,7 +1,7 @@
 #!/usr/bin/python3 Bash
 """ RapScore Flask rendering file """
 from flask import Flask, render_template, request
-""" from models import storage
+from models.engine.db_storage import DBStorage
 from models.address import Address
 from models.contact_info import Contact_info
 from models.investment import Investment
@@ -11,7 +11,7 @@ from models.person import Person
 from models.request import Request
 from models.type_loan import Type_loan
 from models.user import User
-from models.worker import Worker """
+from models.worker import Worker
 import uuid
 
 
@@ -29,7 +29,7 @@ def index():
     """ Display index """
     return render_template('index.html', id=str(uuid.uuid4()))
 
-@app.route('/signup/id-worker', strict_slashes=False)
+@app.route('/signup/id-worker', strict_slashes=False, methods=['GET', 'POST'])
 def id_worker():
     """ Display tests """
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
