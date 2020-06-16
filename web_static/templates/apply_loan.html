@@ -46,13 +46,11 @@
                             <div class="form group">
                                 <label class="form-control mt-2" for="#">N° Request</label>
                                 <input type="date" class="form-control mt-2" id="">
-                                <div class="input-group">
-                                    <a class="form-control dropdown-toggle mt-2" href="#" id="typeIdDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type loan</a>
-                                      <div class="dropdown-menu" aria-labelledby="typeIdDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">New vehicle</a>
-                                        <a class="dropdown-item" href="#">Maintenance</a>
-                                      </div>
-                                </div>
+                                <select name="tipo_identificacion" id="tipo_identificacion" class="form-control mt-2">
+                                    <option value="">Type loan</option>
+                                    <option value="CC">New vehicle</option>
+                                    <option value="CE">Maintenance</option>
+                                </select>
                                 <input type="text" placeholder="Amount request" class="form-control mt-2">
                                 <label class="form-control mt-2" for="#">Status</label>
                                 <label class="form-control mt-2" for="#">Score ()</label>
@@ -112,5 +110,16 @@
             </div>
         </div>
     </footer>
+    <script>
+    /*validacion para tipo de id */
+    function validar_tipo_id() {
+        var tipo_identificacion = $('#tipo_identificacion').val();
+        if (tipo_identificacion == 0 || tipo_identificacion == "") {
+            alert("obligatorio seleccionar una opciòn");
+            return false
+        }
+        return true
+    }        
+    </script>
 </body>
 </html>

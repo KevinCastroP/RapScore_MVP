@@ -64,13 +64,13 @@
                                 <input type="text" placeholder="First Name" class="form-control">
                                 <input type="text" placeholder="Last Name" class="form-control mt-1">
                                 <div class="input-group">
-                                    <a class="form-control dropdown-toggle mt-1 col-md-3" href="#" id="typeIdDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type ID</a>
-                                      <div class="dropdown-menu" aria-labelledby="typeIdDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">CC</a>
-                                        <a class="dropdown-item" href="#">CE</a>
-                                        <a class="dropdown-item" href="#">PA</a>
-                                      </div>
-                                    <input type="text" placeholder="Number ID" class="form-control mt-1 col-md-9">
+                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control mt-1 col-md-6">
+                                        <option value="">type ID</option>
+                                        <option value="CC">Cedula de ciudadania</option>
+                                        <option value="CE">Cedula Extranjera</option>
+                                        <option value="PA">Pasaporte</option>
+                                    </select>
+                                    <input type="text" placeholder="Number ID" class="form-control mt-1 col-md-6">
                                 </div>
                                 <input type="date" placeholder="Birthdate" class="form-control mt-1">
 
@@ -172,6 +172,16 @@
         origin: 'right',
         distance: '300px',
     });
+
+    /*validacion para tipo de id */
+    function validar_tipo_id() {
+        var tipo_identificacion = $('#tipo_identificacion').val();
+        if (tipo_identificacion == 0 || tipo_identificacion == "") {
+            alert("obligatorio seleccionar una opciòn");
+            return false
+        }
+        return true
+    }
 
     /* mostrar contraseña */ 
     function mostrarPassword(){

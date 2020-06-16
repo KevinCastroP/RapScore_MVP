@@ -71,12 +71,11 @@
                                 </div>
                                 <input type="text" placeholder="Legal repre Full name" class="form-control mt-1">
                                 <div class="input-group">
-                                    <a class="form-control dropdown-toggle mt-1 col-md-6" href="#" id="typeIdDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Legal repre type ID</a>
-                                      <div class="dropdown-menu" aria-labelledby="typeIdDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">...</a>
-                                        <a class="dropdown-item" href="#">...</a>
-                                        <a class="dropdown-item" href="#">...</a>
-                                      </div>
+                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control mt-1 col-md-6">
+                                        <option value="">Legal repre type ID</option>
+                                        <option value="NIT">NIT</option>
+                                        <option value="CC">Cedula de ciudadania</option>                                        
+                                    </select>
                                     <input type="text" placeholder="Legal repre number ID" class="form-control mt-1 col-md-6">
                                 </div>
                                 <input type="date" placeholder="Born Date" class="form-control mt-1">
@@ -171,6 +170,15 @@
 	    popup.classList.remove('active');
     });
 
+    /*validacion para tipo de id */
+    function validar_tipo_id() {
+        var tipo_identificacion = $('#tipo_identificacion').val();
+        if (tipo_identificacion == 0 || tipo_identificacion == "") {
+            alert("obligatorio seleccionar una opciòn");
+            return false
+        }
+        return true
+    }
 
     /* animaciones */ 
     window.sr = ScrollReveal();
