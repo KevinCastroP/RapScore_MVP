@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ventana del navegador -->
     <title>RapScore MVP specification</title>
-    <link rel="icon" type="image/png" href="/static/images/icon.png?{{ id }}"/>
+    <link rel="icon" type="image/png" href="../static/images/icon.png?{{ id }}"/>
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <!-- bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- css style -->
-    <link rel="stylesheet" href="/static/styles/main.css?{{ id }}"/>
+    <link rel="stylesheet" href="../static/styles/main.css?{{ id }}"/>
+    <!-- icon close para editar perfil -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
 
-<body>
+<body style="background: linear-gradient(#ffffff, #a1a1a1);">
     <!-- Barra de navegacion fija -->
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <div class="container">
@@ -25,7 +27,7 @@
             </button>
             <div class="collapse navbar-collapse" id="firstNavbar">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="">Log Out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home">Log Out</a></li>
                 </ul>
             </div>
         </div>
@@ -34,7 +36,7 @@
     <!-- contenido de la pagina -->
     <section class="mt-5">
         <div class="container">  
-            
+
             <!-- cabecera Score -->
             <div>
                 <h1 class="score">score</h1>
@@ -52,16 +54,16 @@
                 <div class="carousel-inner">
         
                     <div class="carousel-item active">
-                        <img class="d-block img_size" src="/static/images/income.jpg?{{ id }}" alt="Primer Slide">
+                        <img class="d-block img_size" src="../static/images/income.jpg?{{ id }}" alt="Primer Slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h2 class="l_carousel">IMCOME</h2>
+                        <!--    <h2 class="l_carousel">IMCOME</h2>  -->
                         </div>
                     </div>
         
                     <div class="carousel-item">
-                        <img class="d-block img_size" src="/static/images/record.jpg?{{ id }}" alt="Segundo Slide">
+                        <img class="d-block img_size" src="../static/images/record.jpg?{{ id }}" alt="Segundo Slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h2 class="l_carousel">RECORD</h2>
+                        <!--    <h2 class="l_carousel">RECORD</h2>   -->
                         </div>
                     </div>
         
@@ -79,21 +81,41 @@
         
             </div> <!-- cierre del Slideshow -->
 
+            <br>
             <div class="c_footer">
-                <button type="button" onclick="location.href='#'" class="btn-light btn-lg btn_css">Apply for loan</button>
-                <button type="button" onclick="location.href='#'" class="btn-light btn-lg btn_css">Edit profile</button>
-           </div>   
+                <button type="button" onclick="location.href='/apply-loan'" class="btn-light btn-lg btn_css">Apply for loan</button>
+                <button type="button" id="btn-abrir-popup" class="btn-light btn-lg btn_css btn-abrir-popup">Edit profile</button>
+           </div>
+
+            <!-- ventana emergente para editar perfil -->
+            <div class="overlay" id="overlay">
+                <div class="popup" id="popup">
+                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+                    <h3>Edit Profile</h3>
+                    <form action="">
+                        <div class="contenedor-inputs">
+                            <input type="text" placeholder="Number Phone">
+                            <input type="text" placeholder="Address">
+                            <input type="email" placeholder="Email">
+                            <input type="password" placeholder="Change Password">
+                            <input type="password" placeholder="Confirm Password">
+                        </div>
+                        <input type="submit" class="btn-submit" value="DONE">
+                    </form>
+                </div>
+            </div>
+
 
         </div> <!-- cierra div clase container -->
     </section> <!-- cierre de setion "cuerpo" de la pagina -->
 
-    <br>
+    <br><br>
 
     <footer> <!-- footer (pie de  pagina) -->
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img src="/static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
+                    <img src="../static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
                 </div>
                 <div class="col">
                     <p class="text-center mt-4 float-left">
@@ -111,7 +133,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <img src="/static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
+                    <img src="../static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
                 </div>
             </div>
         </div>
@@ -123,6 +145,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
+    /* js para editar perfil */
+    var btnAbrirPopup = document.getElementById('btn-abrir-popup'),
+	    overlay = document.getElementById('overlay'),
+	    popup = document.getElementById('popup'),
+	    btnCerrarPopup = document.getElementById('btn-cerrar-popup');
+
+    btnAbrirPopup.addEventListener('click', function(){
+	    overlay.classList.add('active');
+	    popup.classList.add('active');
+    });
+
+    btnCerrarPopup.addEventListener('click', function(e){
+	    e.preventDefault();
+	    overlay.classList.remove('active');
+	    popup.classList.remove('active');
+    });
     </script>
 
 </body>
