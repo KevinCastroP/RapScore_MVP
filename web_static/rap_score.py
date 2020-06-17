@@ -31,27 +31,39 @@ def index():
     """ Display index """
     return render_template('index.html', id=str(uuid.uuid4()))
 
-@app.route('/signup/id-worker', strict_slashes=False, methods=['GET', 'POST'])
+@app.route('/signup/id-worker', strict_slashes=False, methods=['POST', 'GET'])
 def id_worker():
     """ Display tests """
+    print("hola kevin")
     if request.method == "POST":
         info = request.form
+        print("hola, cómo estás?")
+        print(info)
         obj = User()
         obj.username = info['username']
         obj.email = info['email']
         obj.psswd = info['password']
         obj.status = "active"
+        print(obj.email)
         data = Person()
+        data.user = obj.username
         data.first_name = info['fname']
+        print(data.first_name)
         data.last_name = info['lname']
-        data.type_id = info['typeID']
+        print(data.last_name)
+        data.type_id = info['tipo-identificacion']
+        print(data.type_id)
         data.number_identification = info['numberID']
+        print(data.number_identification)
         data.born_date = info['date']
-        DBStorage.new(obj)
-        DBStorage.save()
-        DBStorage.new(data)
-        DBStorage.save()
-        DBStorage.close()
+        print(data.born_date)
+        mka = DBStorage()
+        mka.reload()
+        mka.new(obj)
+        mka.save()
+        mka.new(data)
+        mka.save()
+        mka.close()
         return 'success'
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
