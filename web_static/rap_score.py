@@ -40,14 +40,18 @@ def id_worker():
         obj.username = info['username']
         obj.email = info['email']
         obj.psswd = info['password']
+        obj.status = "active"
         data = Person()
         data.first_name = info['fname']
         data.last_name = info['lname']
         data.type_id = info['typeID']
         data.number_identification = info['numberID']
         data.born_date = info['date']
-        DBStorage.new(obj, data)
+        DBStorage.new(obj)
         DBStorage.save()
+        DBStorage.new(data)
+        DBStorage.save()
+        DBStorage.close()
         return 'success'
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
