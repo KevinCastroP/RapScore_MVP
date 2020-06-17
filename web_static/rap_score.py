@@ -2,7 +2,7 @@
 """ RapScore Flask rendering file """
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
-from models.engine.db_storage import DBStorage
+from models.engine import db_storage
 from models.address import Address
 from models.contact_info import Contact_info
 from models.investment import Investment
@@ -17,7 +17,7 @@ import uuid
 
 
 app = Flask(__name__)
-mysql = DBStorage()
+mysql = MySQL(app)
 
 
 """ @app.teardown_appcontext
@@ -47,7 +47,7 @@ def id_worker():
         data.number_identification = info['numberID']
         data.born_date = info['date']
         cur = mysql.connection.cursor()
-        mysql.new(cur)
+        mysql.new(obj)
         mysql.save()
         mysql.close()
         return 'success'
