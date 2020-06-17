@@ -2,7 +2,7 @@
 """ RapScore Flask rendering file """
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
-from models.engine import db_storage
+from models.engine.db_storage import DBStorage
 from models.address import Address
 from models.contact_info import Contact_info
 from models.investment import Investment
@@ -46,10 +46,8 @@ def id_worker():
         data.type_id = info['typeID']
         data.number_identification = info['numberID']
         data.born_date = info['date']
-        cur = mysql.connection.cursor()
-        mysql.new(obj)
-        mysql.save()
-        mysql.close()
+        DBStorage.new(obj, data)
+        DBStorage.save()
         return 'success'
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
