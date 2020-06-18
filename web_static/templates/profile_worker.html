@@ -92,13 +92,21 @@
                 <div class="popup" id="popup">
                     <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
                     <h3>Edit Profile</h3>
-                    <form action="">
+                    <form action="" method="POST">
                         <div class="contenedor-inputs">
-                            <input type="text" placeholder="Number Phone">
-                            <input type="text" placeholder="Address">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Change Password">
-                            <input type="password" placeholder="Confirm Password">
+                            <select name="type-contact" id="tipo_identificacion" class="form-control mt-1">
+                                <option value="">Select Type Contact</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work Number</option>
+                                <option value="Other">Other</option>                                        
+                            </select>
+                            <div>
+                                <input type="text" placeholder="Phone Number" class="form-control mt-4">
+                            </div>
+                            <input type="text" placeholder="Address" class="form-control">
+                            <input type="email" placeholder="Email" class="form-control">
+                            <input type="password" placeholder="Change Password" class="form-control">
+                            <input type="password" placeholder="Confirm Password" class="form-control">
                         </div>
                         <input type="submit" class="btn-submit" value="DONE">
                     </form>
