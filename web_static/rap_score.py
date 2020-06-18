@@ -34,29 +34,20 @@ def index():
 @app.route('/signup/id-worker', strict_slashes=False, methods=['POST', 'GET'])
 def id_worker():
     """ Display tests """
-    print("hola kevin")
     if request.method == "POST":
         info = request.form
-        print("hola, cómo estás?")
-        print(info)
         obj = User()
         obj.username = info['username']
         obj.email = info['email']
         obj.psswd = info['password']
         obj.status = "active"
-        print(obj.email)
         data = Person()
         data.user = obj.id
         data.first_name = info['fname']
-        print(data.first_name)
         data.last_name = info['lname']
-        print(data.last_name)
         data.type_id = info['tipo-identificacion']
-        print(data.type_id)
         data.number_identification = info['numberID']
-        print(data.number_identification)
         data.born_date = info['date']
-        print(data.born_date)
         mka = DBStorage()
         mka.reload()
         mka.new(obj)
@@ -72,10 +63,75 @@ def investor():
     """ Display investors options """
     return render_template('s_investor.html', id=str(uuid.uuid4()))
 
-@app.route('/users/id-person', strict_slashes=False)
+# Inscription person-investor
+@app.route('/users/id-person', strict_slashes=False, methods=['POST', 'GET'])
 def investor_person():
     """ Display investors subscription for a person """
+    if request.method == "POST":
+        info = request.form
+        obj = User()
+        obj.username = info['username']
+        obj.email = info['email']
+        obj.psswd = info['password']
+        obj.status = "active"
+        data = Person()
+        data.user = obj.id
+        data.first_name = info['fname']
+        data.last_name = info['lname']
+        data.type_id = info['tipo-identificacion']
+        data.number_identification = info['numberID']
+        data.born_date = info['date']
+        inv = Investor()
+        inv.investor = data.id
+        mka = DBStorage()
+        mka.reload()
+        mka.new(obj)
+        mka.save()
+        mka.new(data)
+        mka.save()
+        mka.new(inv)
+        mka.save()
+        mka.close()
+        return 'success'
     return render_template('signup_naturalperson.html', id=str(uuid.uuid4()))
+
+# Inscription company investor
+@app.route('/users/id-company', strict_slashes=False, methods=['POST', 'GET'])
+def investor_company():
+    """ Display investors subscription for a company """
+    if request.method == "POST":
+        info = request.form
+        print("hola, cómo estás?")
+        print(info)
+        obj = User()
+        obj.username = info['username']
+        print(obj.username)
+        obj.email = info['email']
+        obj.psswd = info['password']
+        obj.status = "active"
+        data = Person()
+        data.user = obj.id
+        data.name_company = info['ncompany']
+        data.business_name = info['bname']
+        data.tradename = info['tname']
+        data.legal_status = info['lstatus']
+        data.legal_repre_full_name = info['lrepre_name']
+        data.legal_repre_type_id = info['tipo-identificacion']
+        data.legal_repre_number_id = info['lrepre_id']
+        data.born_date = info['date']
+        inv = Investor()
+        inv.investor = data.id
+        mka = DBStorage()
+        mka.reload()
+        mka.new(obj)
+        mka.save()
+        mka.new(data)
+        mka.save()
+        mka.new(inv)
+        mka.save()
+        mka.close()
+        return 'success'
+    return render_template('signup_company.html', id=str(uuid.uuid4()))
 
 # pagina principal del worker
 @app.route('/profile-worker', strict_slashes=False)
@@ -123,12 +179,6 @@ def investment():
 def bank_details():
     """ Display investors subscription for a person """
     return render_template('bank_details.html', id=str(uuid.uuid4()))
-
-
-@app.route('/users/id-company', strict_slashes=False)
-def investor_company():
-    """ Display investors subscription for a company """
-    return render_template('signup_company.html', id=str(uuid.uuid4()))
 
 @app.route('/tests', strict_slashes=False)
 def tests():
