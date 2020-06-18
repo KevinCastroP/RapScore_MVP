@@ -46,7 +46,7 @@ def id_worker():
         obj.status = "active"
         print(obj.email)
         data = Person()
-        data.user = obj.username
+        data.user = obj.id
         data.first_name = info['fname']
         print(data.first_name)
         data.last_name = info['lname']
