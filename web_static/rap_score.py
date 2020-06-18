@@ -55,7 +55,7 @@ def id_worker():
         mka.new(data)
         mka.save()
         mka.close()
-        return 'success'
+        return render_template('profile_worker.html', id=str(uuid.uuid4))
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
 @app.route('/signup/id', strict_slashes=False)
@@ -92,7 +92,7 @@ def investor_person():
         mka.new(inv)
         mka.save()
         mka.close()
-        return 'success'
+        return render_template('profile_investor.html', id=str(uuid.uuid4()))
     return render_template('signup_naturalperson.html', id=str(uuid.uuid4()))
 
 # Inscription company investor
@@ -130,7 +130,7 @@ def investor_company():
         mka.new(inv)
         mka.save()
         mka.close()
-        return 'success'
+        return render_template('profile_investor.html', id=str(uuid.uuid4()))
     return render_template('signup_company.html', id=str(uuid.uuid4()))
 
 # pagina principal del worker
