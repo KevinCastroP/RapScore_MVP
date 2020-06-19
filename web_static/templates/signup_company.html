@@ -58,31 +58,31 @@
                 <!-- columna derecha -->
                 <div class="col mt-4 content-right">
                     <h1 class="text-center">Sign Up</h1>
-                    <form action="" class="card">
+                    <form action="" method="POST" class="card">
                         <div class="card-body bg-light">
                             <div class="form group">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Name company" class="col-md-6 form-control mt-1">
-                                    <input type="text" placeholder="Business Name" class="col-md-6 form-control mt-1">
+                                    <input type="text" placeholder="Name company" class="col-md-6 form-control mt-1" name="ncompany">
+                                    <input type="text" placeholder="Business Name" class="col-md-6 form-control mt-1" name="bname">
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Trade Name" class="col-md-6 form-control mt-1">
-                                    <input type="text" placeholder="Legal Status" class="col-md-6 form-control mt-1">
+                                    <input type="text" placeholder="Trade Name" class="col-md-6 form-control mt-1" name="tname">
+                                    <input type="text" placeholder="Legal Status" class="col-md-6 form-control mt-1" name="lstatus">
                                 </div>
-                                <input type="text" placeholder="Legal repre Full name" class="form-control mt-1">
+                                <input type="text" placeholder="Legal repre Full name" class="form-control mt-1" name="lrepre_name">
                                 <div class="input-group">
-                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control mt-1 col-md-6">
+                                    <select name="tipo-identificacion" id="tipo_identificacion" class="form-control mt-1 col-md-6">
                                         <option value="">Legal repre type ID</option>
                                         <option value="NIT">NIT</option>
                                         <option value="CC">Cedula de ciudadania</option>                                        
                                     </select>
-                                    <input type="text" placeholder="Legal repre number ID" class="form-control mt-1 col-md-6">
+                                    <input type="text" placeholder="Legal repre number ID" class="form-control mt-1 col-md-6" name="lrepre_id">
                                 </div>
-                                <input type="date" placeholder="Born Date" class="form-control mt-1">
-                                <input type="text" placeholder="Username" class="form-control mt-1">
-                                <input type="email" placeholder="Email" class="form-control mt-1">
+                                <input type="date" placeholder="Born Date" class="form-control mt-1" name="date">
+                                <input type="text" placeholder="Username" class="form-control mt-1" name="username">
+                                <input type="email" placeholder="Email" class="form-control mt-1" name="email">
                                 <div class="input-group">
-                                    <input id="txtPassword" type="password" placeholder="Enter Password" Class="form-control mt-1 col-md-11">
+                                    <input id="txtPassword" type="password" placeholder="Enter Password" Class="form-control mt-1 col-md-11" name="password">
                                     <a id="show_password" class="btn btn-primary form-control mt-1 col-md-1" type="button" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></a>
                                 </div>
                                 <div class="form-group form-check mt-3 was-validated">

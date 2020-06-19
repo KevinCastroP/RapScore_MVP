@@ -58,25 +58,25 @@
                 <!-- columna derecha -->
                 <div class="col mt-4 content-right">
                     <h1 class="text-center">Sign Up</h1>
-                    <form action="" class="card">
+                    <form action="" method="POST" class="card">
                         <div class="card-body bg-light">
                             <div class="form group">
-                                <input type="text" placeholder="First Name" class="form-control">
-                                <input type="text" placeholder="Last Name" class="form-control mt-1">
+                                <input type="text" placeholder="First Name" class="form-control" name="fname">
+                                <input type="text" placeholder="Last Name" class="form-control mt-1" name="lname">
                                 <div class="input-group">
-                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control mt-1 col-md-6">
+                                    <select name="tipo-identificacion" id="tipo_identificacion" class="form-control mt-1 col-md-6">
                                         <option value="">type ID</option>
                                         <option value="CC">Cedula de ciudadania</option>
                                         <option value="CE">Cedula Extranjera</option>
                                         <option value="PA">Pasaporte</option>
                                     </select>
-                                    <input type="text" placeholder="Number ID" class="form-control mt-1 col-md-6">
+                                    <input type="text" placeholder="Number ID" class="form-control mt-1 col-md-6" name="numberID">
                                 </div>
-                                <input type="date" placeholder="Birthdate" class="form-control mt-1">
-                                <input type="text" placeholder="Username" class="form-control mt-1">
-                                <input type="email" placeholder="Email" class="form-control mt-1">
+                                <input type="date" placeholder="Birthdate" class="form-control mt-1" name="date">
+                                <input type="text" placeholder="Username" class="form-control mt-1" name="username">
+                                <input type="email" placeholder="Email" class="form-control mt-1" name="email">
                                 <div class="input-group">
-                                    <input id="txtPassword" type="password" placeholder="Enter Password" Class="form-control mt-1 col-md-11">
+                                    <input id="txtPassword" type="password" placeholder="Enter Password" Class="form-control mt-1 col-md-11" name="password">
                                     <a id="show_password" class="btn btn-primary form-control mt-1 col-md-1" type="button" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></a>
                                 </div>
                                 <div class="form-group form-check mt-3 was-validated">

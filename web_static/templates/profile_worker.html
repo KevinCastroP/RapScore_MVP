@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../static/styles/main.css?{{ id }}"/>
     <!-- icon close para editar perfil -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body style="background: linear-gradient(#ffffff, #a1a1a1);">
@@ -84,27 +85,35 @@
             <br>
             <div class="c_footer">
                 <button type="button" onclick="location.href='/apply-loan'" class="btn-light btn-lg btn_css" style="margin-left: 33%;">Apply for loan</button>
-                <button type="button" id="btn-abrir-popup" class="btn-light btn-lg btn_css btn-abrir-popup"style="margin-left: 2%;">Edit profile</button>
+                <button type="button" id="btn-abrir-popup" class="btn-light btn-lg btn_css btn-abrir-popup"style="margin-left: 2%;">Edit profile</button>              
            </div>
 
             <!-- ventana emergente para editar perfil -->
-            <div class="overlay" id="overlay">
+            <div class="overlay mt-2" id="overlay">
                 <div class="popup" id="popup">
                     <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
                     <h3>Edit Profile</h3>
-                    <form action="">
+                    <form action="" method="POST">
                         <div class="contenedor-inputs">
-                            <input type="text" placeholder="Number Phone">
-                            <input type="text" placeholder="Address">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Change Password">
-                            <input type="password" placeholder="Confirm Password">
+                            <select name="type-contact" id="tipo_identificacion" class="form-control mt-1">
+                                <option value="">Select Type Contact</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work Number</option>
+                                <option value="Other">Other</option>                                        
+                            </select>
+                            <div>
+                                <input type="text" placeholder="Phone Number" class="form-control mt-4" name="data-contact">
+                            </div>
+                            <input type="text" placeholder="Address" class="form-control" name="address">
+                            <input type="email" placeholder="Email" class="form-control" name="email">
+                            <input type="password" placeholder="Change Password" class="form-control">
+                            <input type="password" placeholder="Confirm Password" class="form-control" name="password">
                         </div>
                         <input type="submit" class="btn-submit" value="DONE">
                     </form>
                 </div>
             </div>
-
+            
 
         </div> <!-- cierra div clase container -->
     </section> <!-- cierre de setion "cuerpo" de la pagina -->
@@ -152,6 +161,18 @@
 	    btnCerrarPopup = document.getElementById('btn-cerrar-popup');
 
     btnAbrirPopup.addEventListener('click', function(){
+        async function loadData() {
+            let response = await fetch(window.location + '/info', { headers:{
+                'Content-Type': 'application/json'
+            }}).then(r => {
+                return (r.json());
+            }).then(r => {
+                return (r);
+            });
+            console.log(response);
+        };
+        loadData()
+        // console.log(window.location);
 	    overlay.classList.add('active');
 	    popup.classList.add('active');
     });
