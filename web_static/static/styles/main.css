@@ -265,3 +265,8 @@ section .l_carousel{
 	text-align: center;
 	font-size: 120%;
 }
+
+#b-cancel{
+	margin-left: 40%;
+	margin-top: 5%;
+}

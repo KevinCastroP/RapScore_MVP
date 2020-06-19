@@ -49,15 +49,16 @@
                                     <label class="form-control mt-1 col-md-4">Date Request</label>
                                     <input type="date" class="form-control mt-1 col-md-8" name="date">
                                 </div>
-                                <select name="type-loan" id="tipo_identificacion" class="form-control mt-2">
+                                <select name="type-loan" id="tipo_identificacion" class="form-control mt-2" name="type-loan">
                                     <option value="">Type loan</option>
                                     <option value="CC">New vehicle</option>
                                     <option value="CE">Maintenance</option>
                                 </select>
-                                <input type="text" placeholder="Amount request" class="form-control mt-2">
+                                <input type="text" placeholder="Amount request" class="form-control mt-2" name="amount">
                                 <label class="form-control mt-2" for="#">Status</label>
                                 <label class="form-control mt-2" for="#">Score (70,2%)</label>
                             </div>
+                        <button type="button" onclick="location.href='/loan-details'" class="btn-light btn-lg btn_css col-md-12 mt-5">NEXT</button>
                         </div>
                     </form>
                 </div>
@@ -116,16 +117,12 @@
                           </tbody>
                         </table>
                     </div> <!-- div de table --> 
+                <button type="button" onclick="location.href='/profile-worker/{{ person_id }}'" class="btn-light btn-lg btn_css btn-abrir-popup" id="b-cancel">CANCEL</button>
                 </div>
     
             </div> <!-- cierre div clase row -->
 
             <br>
-
-            <div>
-                <button type="button" onclick="location.href='/loan-details'" class="btn-light btn-lg btn_css" style="margin-left: 40%;">NEXT</button>
-                <button type="button" onclick="location.href='/profile-worker'" class="btn-light btn-lg btn_css btn-abrir-popup" style="margin-left: 2%;">CANCEL</button>
-           </div>
 
         </div> <!-- cierra div clase container -->
     </section> <!-- cierre de setion "cuerpo" de la pagina -->    

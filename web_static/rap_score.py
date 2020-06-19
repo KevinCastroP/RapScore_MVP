@@ -188,8 +188,6 @@ def get_person_info(person_id):
     print(resp)
     return jsonify(resp), 200
     
-   
-
 # pagina apply loan
 @app.route('/apply-loan/<worker_id>', strict_slashes=False, methods=['POST', 'GET'])
 def apply_loan(worker_id):
@@ -197,13 +195,24 @@ def apply_loan(worker_id):
     if request.method == "POST":
         info = request.form
         workers = storage.all(Worker)
+        number = None
         for wor in workers.values():
-            wor = workers.id
-        # if wor.worker == person.id:
-        return redirect('/loan-details/{}'.format(wor.id), code=302)
-    return render_template('apply_loan.html', id=str(uuid.uuid4()))
-    # return redirect('/loan-details/{}'.format(obj.id), code=302)
-    # return render_template('profile_worker.html', id=str(uuid.uuid4()))
+            if wor.worker == worker_id:
+                number = wor
+        if number is None:
+            number = Worker()
+        number.worker = worker_id
+        number.request_date = info['date']
+        number.type_loan = info['type-loan']
+        number.amount_request = info['amount']
+
+        mka = storage
+        mka.new(number)
+        mka.save()
+        mka.close()
+
+        return redirect('/loan-details/{}'.format(number.id), code=302)
+    return render_template('apply_loan.html', id=str(uuid.uuid4()), person_id=worker_id)
 
 # pagina loan details
 @app.route('/loan-details', strict_slashes=False)
@@ -294,13 +303,11 @@ def edit_profile():
     """ Display investors subscription for a person """
     return render_template('edit_profile.html', id=str(uuid.uuid4()))
 
-
 # pagina investment investor.
 @app.route('/investment', strict_slashes=False)
 def investment():
     """ Display investors subscription for a person """
     return render_template('investment.html', id=str(uuid.uuid4()))
-
 
 # add bank details.
 @app.route('/bank-details', strict_slashes=False)
