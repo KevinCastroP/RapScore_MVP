@@ -1,8 +1,8 @@
 #!/usr/bin/python3 Bash
 """ RapScore Flask rendering file """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
-from models.engine.db_storage import DBStorage
+from models import storage
 from models.address import Address
 from models.contact_info import Contact_info
 from models.investment import Investment
@@ -20,16 +20,54 @@ app = Flask(__name__)
 mysql = MySQL(app)
 
 
-""" @app.teardown_appcontext
+@app.teardown_appcontext
 def close_db(error):
-     Remove SQLalchemy session 
-    DBstorage.close() """
+    """ Remove SQLalchemy session """ 
+    storage.close()
+
+@app.errorhandler(400)
+def error_db(error):
+    """ Remove SQLalchemy session """ 
+    print(error)
 
 @app.route('/')
 @app.route('/home', strict_slashes=False)
 def index():
     """ Display index """
     return render_template('index.html', id=str(uuid.uuid4()))
+
+@app.route('/signin', strict_slashes=False, methods=['POST'])
+def sign_in():
+    """ Display investors options """
+    try:
+        print("enter signin")
+        form = request.form.to_dict(flat=False)
+        print(form.keys())
+        user = form['email'][0]
+        passd = form['password'][0]
+        print(user, passd)
+        users = storage.all(User)
+        print(users)
+        for us in users.values():
+            if us.email == user and us.psswd == passd:
+                user = us
+        persons = storage.all(Person)
+        for per in persons.values():
+            if per.user == user.id:
+                person = per 
+        print(person)
+        workers = storage.all(Worker)
+        if person.id == workers.worker:
+            return redirect('/profile-worker/{}'.format(person.id), code=302)
+    except Exception as e:
+        print(e)
+        return "failed"
+
+
+@app.route('/signup/id', strict_slashes=False)
+def investor():
+    """ Display investors options """
+    return render_template('s_investor.html', id=str(uuid.uuid4()))    
 
 @app.route('/signup/id-worker', strict_slashes=False, methods=['POST', 'GET'])
 def id_worker():
@@ -48,20 +86,110 @@ def id_worker():
         data.type_id = info['tipo-identificacion']
         data.number_identification = info['numberID']
         data.born_date = info['date']
-        mka = DBStorage()
+        mka = storage
         mka.reload()
         mka.new(obj)
         mka.save()
         mka.new(data)
         mka.save()
         mka.close()
-        return render_template('profile_worker.html', id=str(uuid.uuid4))
+        return redirect('/profile-worker/{}'.format(data.id), code=302)
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
-@app.route('/signup/id', strict_slashes=False)
-def investor():
-    """ Display investors options """
-    return render_template('s_investor.html', id=str(uuid.uuid4()))
+# pagina principal del worker
+@app.route('/profile-worker/<person_id>', strict_slashes=False, methods=['POST', 'GET'])
+def profile_worker(person_id):
+    """ Display investors subscription for a person """
+    print("profile worker", request.method)
+    if request.method == "POST":
+        print("mijo")
+        info = request.form
+        contacts = storage.all(Contact_info)        
+        number = None
+        for contact in contacts.values():
+            if contact.person == person_id:
+                number = contact
+        if number is None:
+            number = Contact_info()
+        number.person = person_id
+        number.type_contact = info['type-contact']
+        number.data_contact = info['data-contact']
+        
+        addresses = storage.all(Address)
+        add = None
+        for adding in addresses.values():
+            if adding.person == person_id:
+                add = adding
+        if add is None:
+            add = Address()
+        add.address = info['address']
+        add.person = person_id
+
+        objects = storage.all(Person)
+        obj = None
+        for ob in objects.values():
+            if ob.id == person_id:
+                obj = storage.get(User, ob.user)
+        if obj is None:
+            obj = User()
+        obj.email = info['email']
+        obj.psswd = info['password']
+        mka = storage
+        mka.new(number)
+        mka.save()
+        mka.new(add)
+        mka.save()
+        mka.new(obj)
+        mka.save()
+        mka.close()
+        return redirect('/profile-worker/{}'.format(obj.id), code=302)
+    return render_template('profile_worker.html', id=str(uuid.uuid4()))
+
+@app.route('/profile-worker/<person_id>/info', strict_slashes=False, methods=['GET'])
+def get_person_info(person_id):
+    """ Method that get info """
+    print("getting user info")
+    contacts = storage.all(Contact_info)
+    for contact in contacts.values():
+        if contact.person == person_id:
+            number = contact
+    if number is None:
+        number = Contact_info()
+
+    addresses = storage.all(Address)
+    for adding in addresses.values():
+        if adding.person == person_id:
+            add = adding
+    if add is None:
+        add = Address()
+
+    objects = storage.all(Person)
+    for ob in objects.values():
+        if ob.id == person_id:
+            obj = storage.get(User, ob.user)
+    if obj is None:
+        obj = User()
+
+    resp = {}
+    resp['contact'] = number.type_contact
+    resp['address'] = add.address
+    resp['user'] = obj.email
+    print(resp)
+    return jsonify(resp), 200
+    
+   
+
+# pagina apply loan
+@app.route('/apply-loan', strict_slashes=False)
+def apply_loan():
+    """ Display investors subscription for a person """
+    return render_template('apply_loan.html', id=str(uuid.uuid4()))
+
+# pagina loan details
+@app.route('/loan-details', strict_slashes=False)
+def loan_details():
+    """ Display investors subscription for a person """
+    return render_template('loan_details.html', id=str(uuid.uuid4()))    
 
 # Inscription person-investor
 @app.route('/users/id-person', strict_slashes=False, methods=['POST', 'GET'])
@@ -83,7 +211,7 @@ def investor_person():
         data.born_date = info['date']
         inv = Investor()
         inv.investor = data.id
-        mka = DBStorage()
+        mka = storage
         mka.reload()
         mka.new(obj)
         mka.save()
@@ -121,7 +249,7 @@ def investor_company():
         data.born_date = info['date']
         inv = Investor()
         inv.investor = data.id
-        mka = DBStorage()
+        mka = storage
         mka.reload()
         mka.new(obj)
         mka.save()
@@ -132,26 +260,6 @@ def investor_company():
         mka.close()
         return render_template('profile_investor.html', id=str(uuid.uuid4()))
     return render_template('signup_company.html', id=str(uuid.uuid4()))
-
-# pagina principal del worker
-@app.route('/profile-worker', strict_slashes=False)
-def profile_worker():
-    """ Display investors subscription for a person """
-    return render_template('profile_worker.html', id=str(uuid.uuid4()))
-
-# pagina apply loan
-@app.route('/apply-loan', strict_slashes=False)
-def apply_loan():
-    """ Display investors subscription for a person """
-    return render_template('apply_loan.html', id=str(uuid.uuid4()))
-
-
-# pagina loan details
-@app.route('/loan-details', strict_slashes=False)
-def loan_details():
-    """ Display investors subscription for a person """
-    return render_template('loan_details.html', id=str(uuid.uuid4()))
-
 
 # pagina pricipal investor
 @app.route('/profile-investor', strict_slashes=False)
