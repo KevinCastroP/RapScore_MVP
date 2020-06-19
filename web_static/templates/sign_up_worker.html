@@ -30,7 +30,6 @@
             <div class="collapse navbar-collapse" id="firstNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup">Sign In</a></li>
                     <li class="nav-item"><a class="nav-link" href="/signup/id-worker#developed_dy">Contact</a></li>
                 </ul>
             </div>
@@ -72,7 +71,10 @@
                                     </select>
                                     <input type="text" placeholder="Number ID" class="form-control mt-1 col-md-6" name="numberID">
                                 </div>
-                                <input type="date" placeholder="Birthdate" class="form-control mt-1" name="date">
+                                <div class="input-group">
+                                    <label class="form-control mt-1 col-md-3">birthday</label>
+                                    <input type="date" class="form-control mt-1 col-md-9">
+                                </div>
                                 <input type="text" placeholder="Username" class="form-control mt-1" name="username">
                                 <input type="email" placeholder="Email" class="form-control mt-1" name="email">
                                 <div class="input-group">
@@ -89,25 +91,9 @@
                                 <button type="submit" class="btn btn-primary" style="margin-left: 40%;">Submit</button>
                             </div>
                         </div>
-                    </form>
+                    </form><br>
                 </div>    
             </div> <!-- cierre div clase row -->
-            
-            <!-- ventana emergente de login -->
-            <div class="overlay" id="overlay">
-                <div class="popup" id="popup">
-                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-                    <h3>Sign In</h3>
-                    <h4>Welcome!</h4>
-                    <form action="">
-                        <div class="contenedor-inputs">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
-                        </div>
-                        <input type="submit" class="btn-submit" value="DONE">
-                    </form>
-                </div>
-            </div>
 
         </div> <!-- cierra div clase container -->
     </section> <!-- cierre de setion "cuerpo" de la pagina -->
@@ -147,23 +133,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script>
-    /* js para ventana de login */
-    var btnAbrirPopup = document.getElementById('btn-abrir-popup'),
-	    overlay = document.getElementById('overlay'),
-	    popup = document.getElementById('popup'),
-	    btnCerrarPopup = document.getElementById('btn-cerrar-popup');
-
-    btnAbrirPopup.addEventListener('click', function(){
-	    overlay.classList.add('active');
-	    popup.classList.add('active');
-    });
-
-    btnCerrarPopup.addEventListener('click', function(e){
-	    e.preventDefault();
-	    overlay.classList.remove('active');
-	    popup.classList.remove('active');
-    });
-
     /*validacion para tipo de id */
     function validar_tipo_id() {
         var tipo_identificacion = $('#tipo_identificacion').val();
