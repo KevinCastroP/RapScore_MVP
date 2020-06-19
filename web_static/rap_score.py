@@ -55,10 +55,18 @@ def sign_in():
         for per in persons.values():
             if per.user == user.id:
                 person = per 
-        print(person)
+        print(person.id)
         workers = storage.all(Worker)
-        if person.id == workers.worker:
-            return redirect('/profile-worker/{}'.format(person.id), code=302)
+        for wor in workers.values():
+            if wor.worker == person.id:
+                return redirect('/profile-worker/{}'.format(person.id), code=302)
+
+        investors = storage.all(Investor)
+        for inv in investors.values():
+            if inv.investor == person.id:
+                return redirect('/profile-investor/{}'.format(person.id), code=302)
+        
+            # return redirect('/home')
     except Exception as e:
         print(e)
         return "failed"
@@ -86,13 +94,17 @@ def id_worker():
         data.type_id = info['tipo-identificacion']
         data.number_identification = info['numberID']
         data.born_date = info['date']
+        wor = Worker()
+        wor.worker = data.id
         mka = storage
         mka.reload()
         mka.new(obj)
         mka.save()
         mka.new(data)
         mka.save()
-        mka.close()
+        mka.new(wor)
+        mka.save()
+        mka.close()        
         return redirect('/profile-worker/{}'.format(data.id), code=302)
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
@@ -262,8 +274,8 @@ def investor_company():
     return render_template('signup_company.html', id=str(uuid.uuid4()))
 
 # pagina pricipal investor
-@app.route('/profile-investor', strict_slashes=False)
-def profile_investor():
+@app.route('/profile-investor/<investor_id>', strict_slashes=False)
+def profile_investor(investor_id):
     """ Display investors subscription for a person """
     return render_template('profile_investor.html', id=str(uuid.uuid4()))
 
