@@ -153,7 +153,8 @@ def profile_worker(person_id):
         mka.save()
         mka.close()
         return redirect('/profile-worker/{}'.format(obj.id), code=302)
-    return render_template('profile_worker.html', id=str(uuid.uuid4()))
+    print(person_id)
+    return render_template('profile_worker.html', id=str(uuid.uuid4()), person_id=person_id)
 
 @app.route('/profile-worker/<person_id>/info', strict_slashes=False, methods=['GET'])
 def get_person_info(person_id):
