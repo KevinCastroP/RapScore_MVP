@@ -69,7 +69,7 @@ def sign_in():
             # return redirect('/home')
     except Exception as e:
         print(e)
-        return "failed"
+        return redirect('/home')
 
 
 @app.route('/signup/id', strict_slashes=False)
@@ -192,10 +192,19 @@ def get_person_info(person_id):
    
 
 # pagina apply loan
-@app.route('/apply-loan', strict_slashes=False)
-def apply_loan():
+@app.route('/apply-loan/<worker_id>', strict_slashes=False, methods=['POST', 'GET'])
+def apply_loan(worker_id):
     """ Display investors subscription for a person """
+    if request.method == "POST":
+        info = request.form
+        workers = storage.all(Worker)
+        for wor in workers.values():
+            wor = workers.id
+        # if wor.worker == person.id:
+        return redirect('/loan-details/{}'.format(wor.id), code=302)
     return render_template('apply_loan.html', id=str(uuid.uuid4()))
+    # return redirect('/loan-details/{}'.format(obj.id), code=302)
+    # return render_template('profile_worker.html', id=str(uuid.uuid4()))
 
 # pagina loan details
 @app.route('/loan-details', strict_slashes=False)
