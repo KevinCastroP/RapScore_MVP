@@ -232,7 +232,7 @@ def investor_person():
         mka.new(inv)
         mka.save()
         mka.close()
-        return render_template('profile_investor.html', id=str(uuid.uuid4()))
+        return redirect('/profile-investor/{}'.format(obj.id), code=302)
     return render_template('signup_naturalperson.html', id=str(uuid.uuid4()))
 
 # Inscription company investor
@@ -270,7 +270,7 @@ def investor_company():
         mka.new(inv)
         mka.save()
         mka.close()
-        return render_template('profile_investor.html', id=str(uuid.uuid4()))
+        return redirect('/profile-investor/{}'.format(obj.id), code=302)
     return render_template('signup_company.html', id=str(uuid.uuid4()))
 
 # pagina pricipal investor
