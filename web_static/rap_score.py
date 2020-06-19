@@ -1,7 +1,6 @@
 #!/usr/bin/python3 Bash
 """ RapScore Flask rendering file """
 from flask import Flask, render_template, request, redirect, jsonify
-from flask_mysqldb import MySQL
 from models import storage
 from models.address import Address
 from models.contact_info import Contact_info
@@ -17,7 +16,6 @@ import uuid
 
 
 app = Flask(__name__)
-mysql = MySQL(app)
 
 
 @app.teardown_appcontext
