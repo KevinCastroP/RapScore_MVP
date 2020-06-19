@@ -39,9 +39,26 @@
         <div class="container">  
 
             <!-- cabecera Score -->
-            <div>
-                <h1 class="score">score</h1>
-                <h3 class="n_score">120</h3>
+            <div class="table-worker">
+                <table class="table table-bordered table-worker1">
+                    <thead>
+                      <tr>
+                        <th class="th-sm" scope="col">Antigue</th>
+                        <th class="th-sm" scope="col">Travel</th>
+                        <th class="th-sm" scope="col">Deliveries</th>
+                        <th class="th-sm" scope="col">Qualification</th>
+                        <th class="th-sm" scope="col">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1 Year</td>
+                        <td>128 Km</td>
+                        <td>28 Made</td>
+                        <td>5 Ptos</td>
+                        <td>60%</td>
+                      </tr>
+                  </table>
             </div>
 
             <!-- Slideshow -->
@@ -89,12 +106,12 @@
            </div>
 
             <!-- ventana emergente para editar perfil -->
-            <div class="overlay mt-2" id="overlay">
+            <div class="overlay" id="overlay">
                 <div class="popup" id="popup">
                     <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
                     <h3>Edit Profile</h3>
                     <form action="" method="POST">
-                        <div class="contenedor-inputs">
+                        <div class="">
                             <select name="type-contact" id="tipo_identificacion" class="form-control mt-1">
                                 <option value="">Select Type Contact</option>
                                 <option value="Personal">Personal</option>
@@ -102,14 +119,14 @@
                                 <option value="Other">Other</option>                                        
                             </select>
                             <div>
-                                <input type="text" placeholder="Phone Number" class="form-control mt-4" name="data-contact">
+                                <input type="text" placeholder="Phone Number" class="form-control mt-2" name="data-contact">
                             </div>
-                            <input type="text" placeholder="Address" class="form-control" name="address">
-                            <input type="email" placeholder="Email" class="form-control" name="email">
-                            <input type="password" placeholder="Change Password" class="form-control">
-                            <input type="password" placeholder="Confirm Password" class="form-control" name="password">
+                            <input type="text" placeholder="Address" class="form-control mt-2" name="address">
+                            <input type="email" placeholder="Email" class="form-control mt-2" name="email">
+                            <input type="password" placeholder="Change Password" class="form-control mt-2">
+                            <input type="password" placeholder="Confirm Password" class="form-control mt-2" name="password">
                         </div>
-                        <input type="submit" class="btn-submit" value="DONE">
+                        <input type="submit" class="btn-submit mt-4" value="DONE">
                     </form>
                 </div>
             </div>

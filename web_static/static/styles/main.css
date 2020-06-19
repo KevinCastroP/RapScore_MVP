@@ -244,3 +244,24 @@ section .l_carousel{
 .table-wrapper-scroll-y {
 	display: block;
 }
+
+.c-center{
+	margin-left: 25px;
+}
+
+.my-custom-scrollbar1 {
+	position: relative;
+	height: 335px;
+	width: 560px;
+	overflow: auto;
+}
+
+.table-worker{
+	margin-top: 80px;
+}
+
+.table-worker1{
+	background-color: rgba(173, 216, 230, 0.808);
+	text-align: center;
+	font-size: 120%;
+}

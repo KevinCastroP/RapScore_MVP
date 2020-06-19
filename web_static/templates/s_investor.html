@@ -30,7 +30,6 @@
             <div class="collapse navbar-collapse" id="firstNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup">Sign In</a></li>
                     <li class="nav-item"><a class="nav-link" href="/signup/id/#developed_dy">Contact</a></li>
                 </ul>
             </div>
@@ -47,7 +46,7 @@
                 <!-- columna izquierda -->
                 <div class="col-md-6 mt-4">
                     <div class="header-content-left">
-                        <img src="/static/images/investments.png?{{ id }}" alt="CrediRap_investments" style="width: 75%;">
+                        <img src="../static/images/investments.png?{{ id }}" alt="CrediRap_investments" style="width: 75%;">
                         <p class="text-justify mt-2">
                             This project proposes a workforce based credit system, implementing technology and performance. The main goal is to facilitate fast loan access to workers based on their performance. We have two main participants. Investors and workers. Investors invest
                             in the loan system based on the worker's score and workers will have access to the loan depending on their performance.
@@ -71,22 +70,7 @@
                 </div>
     
             </div> <!-- cierre div clase row -->
-            
-            <!-- ventana emergente de login -->
-            <div class="overlay" id="overlay">
-                <div class="popup" id="popup">
-                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-                    <h3>Sign In</h3>
-                    <h4>Welcome!</h4>
-                    <form action="">
-                        <div class="contenedor-inputs">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
-                        </div>
-                        <input type="submit" class="btn-submit" value="DONE">
-                    </form>
-                </div>
-            </div>
+    
         </div>
     </section>
 
@@ -94,7 +78,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img src="/static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
+                    <img src="../static/images/logo_rappi.png?{{ id }}" class="float-right mt-4" alt="logo_rappi" style="width: 30%;">
                 </div>
                 <div class="col">
                     <p class="text-center mt-4 float-left">
@@ -112,7 +96,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <img src="/static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
+                    <img src="../static/images/logo_holbeton.png?{{ id }}" class="float-left mt-4 my-3" alt="logo_holberton" style="width: 30%;">
                 </div>
             </div>
         </div>
@@ -125,22 +109,6 @@
 
     <!--funciones y animacion js -->
     <script>
-    /* js para ventana de login */
-    var btnAbrirPopup = document.getElementById('btn-abrir-popup'),
-	    overlay = document.getElementById('overlay'),
-	    popup = document.getElementById('popup'),
-	    btnCerrarPopup = document.getElementById('btn-cerrar-popup');
-
-    btnAbrirPopup.addEventListener('click', function(){
-	    overlay.classList.add('active');
-	    popup.classList.add('active');
-    });
-    btnCerrarPopup.addEventListener('click', function(e){
-	    e.preventDefault();
-	    overlay.classList.remove('active');
-	    popup.classList.remove('active');
-    });
-
     /* animaciones */ 
     window.sr = ScrollReveal();
     sr.reveal('.content-right', {

@@ -44,29 +44,78 @@
                     <form action="" class="card">
                         <div class="card-body bg-light">
                             <div class="form group">
-                                <label class="form-control mt-2" for="#">N° Request</label>
-                                <input type="date" class="form-control mt-2" id="">
-                                <select name="tipo_identificacion" id="tipo_identificacion" class="form-control mt-2">
+                                <label class="form-control mt-2" for="#">N° Request (3456)</label>
+                                <div class="input-group">
+                                    <label class="form-control mt-1 col-md-4">Date Request</label>
+                                    <input type="date" class="form-control mt-1 col-md-8">
+                                </div>
+                                <select name="type-loan" id="tipo_identificacion" class="form-control mt-2">
                                     <option value="">Type loan</option>
                                     <option value="CC">New vehicle</option>
                                     <option value="CE">Maintenance</option>
                                 </select>
                                 <input type="text" placeholder="Amount request" class="form-control mt-2">
                                 <label class="form-control mt-2" for="#">Status</label>
-                                <label class="form-control mt-2" for="#">Score ()</label>
+                                <label class="form-control mt-2" for="#">Score (70,2%)</label>
                             </div>
                         </div>
                     </form>
                 </div>
 
-                <!-- columna izquierda -->
+                <!-- columna derecha -->
                 <div class="col mt-4 content-right">
                     <h1 class="text-center">Percentage Table</h1>
-                    <form action="" class="card">
-                        <div class="card-body bg-light percentage_table">
 
-                        </div>
-                    </form>
+                    <div class="my-custom-scrollbar1">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th class="th-sm" scope="col">N°</th>
+                              <th class="th-sm" scope="col">Interest rate</th>
+                              <th class="th-sm" scope="col"><label class="c-center">Amount</label></th>
+                              <th class="th-sm" scope="col"> <label class="c-center">Term</label></th>
+                              <th class="th-sm" scope="col">Required Score</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>2.15%</td>
+                              <td>$50.000 - $300.000</td>
+                              <td>6 – 12 Months</td>
+                              <td>60.00%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2</th>
+                              <td>2.03%</td>
+                              <td>$301.000 - $600.000</td>
+                              <td>6 – 12 Months</td>
+                              <td>70.00%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3</th>
+                              <td>1.91%</td>
+                              <td>$601.000 - $1.000.000</td>
+                              <td>12 – 18 Months</td>
+                              <td>80.00%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">4</th>
+                              <td>1.82%</td>
+                              <td>$1.001.000 - $1.500.000</td>
+                              <td>12 – 18 Months</td>
+                              <td>90.00%</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">5</th>
+                              <td>1.76%</td>
+                              <td>$1.501.000 - $3.000.000</td>
+                              <td>12 – 24 Months</td>
+                              <td>100.00%</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div> <!-- div de table --> 
                 </div>
     
             </div> <!-- cierre div clase row -->
