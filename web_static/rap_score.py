@@ -1,5 +1,5 @@
 #!/usr/bin/python3 Bash
-""" RapScore Flask rendering file """
+""" RapScore Flask routing file """
 from flask import Flask, render_template, request, redirect, jsonify
 from models import storage
 from models.address import Address
@@ -17,26 +17,39 @@ import uuid
 
 app = Flask(__name__)
 
-
+# Close session when error connection to database
 @app.teardown_appcontext
 def close_db(error):
-    """ Remove SQLalchemy session """ 
+    """
+    Remove SQLalchemy session
+    Closes an open session
+    """
     storage.close()
 
+# Print error when API fails.
 @app.errorhandler(400)
 def error_db(error):
-    """ Remove SQLalchemy session """ 
+    """
+    Remove SQLalchemy session
+    When an error 400 appears show
+    the error in terminal
+    """
     print(error)
 
+# Home landing web appplication page
+# This home page is where the client lands for the first time
+# to read about the project and choos which type of account it wants.
 @app.route('/')
 @app.route('/home', strict_slashes=False)
 def index():
-    """ Display index """
+    """ Display index html """
     return render_template('index.html', id=str(uuid.uuid4()))
 
+# SIGNIN OPTION
+# Login in is an option for already subscribed clients.
 @app.route('/signin', strict_slashes=False, methods=['POST'])
 def sign_in():
-    """ Display investors options """
+    """ Method that searches login credentials in database """
     try:
         print("enter signin")
         form = request.form.to_dict(flat=False)
@@ -69,15 +82,18 @@ def sign_in():
         print(e)
         return redirect('/home')
 
-
+# INVESTORS TWO FIRST OPTIONS PAGE
+# Investors can choose from two profiles, PERSON or COMPANY
 @app.route('/signup/id', strict_slashes=False)
 def investor():
-    """ Display investors options """
+    """ Display investors html """
     return render_template('s_investor.html', id=str(uuid.uuid4()))    
 
+# WORKER SUBCRIPTION PAGE
+# The client (worker) can create an account from this page
 @app.route('/signup/id-worker', strict_slashes=False, methods=['POST', 'GET'])
 def id_worker():
-    """ Display tests """
+    """ Worker subscription form """
     if request.method == "POST":
         info = request.form
         obj = User()
@@ -106,10 +122,10 @@ def id_worker():
         return redirect('/profile-worker/{}'.format(data.id), code=302)
     return render_template('sign_up_worker.html', id=str(uuid.uuid4()))
 
-# pagina principal del worker
+# MAIN WORKER PAGE
 @app.route('/profile-worker/<person_id>', strict_slashes=False, methods=['POST', 'GET'])
 def profile_worker(person_id):
-    """ Display investors subscription for a person """
+    """ Worker profile edit profile form """
     print("profile worker", request.method)
     if request.method == "POST":
         print("mijo")
@@ -156,9 +172,13 @@ def profile_worker(person_id):
     print(person_id)
     return render_template('profile_worker.html', id=str(uuid.uuid4()), person_id=person_id)
 
+# This code gets the information from the database to display in already
+# filled fields from the clients profile. When the edit window popups, fields
+# should have the information already added to the system. This feature is not
+# active.
 @app.route('/profile-worker/<person_id>/info', strict_slashes=False, methods=['GET'])
 def get_person_info(person_id):
-    """ Method that get info """
+    """ Method that gets info to post in edit profile form filled fields """
     print("getting user info")
     contacts = storage.all(Contact_info)
     for contact in contacts.values():
@@ -188,10 +208,13 @@ def get_person_info(person_id):
     print(resp)
     return jsonify(resp), 200
     
-# pagina apply loan
+# Apply loan html
+# This section is for workers to request a loan.
 @app.route('/apply-loan/<worker_id>', strict_slashes=False, methods=['POST', 'GET'])
 def apply_loan(worker_id):
-    """ Display investors subscription for a person """
+    """
+    Display workers apply-loan html fill out form
+    """
     if request.method == "POST":
         info = request.form
         workers = storage.all(Worker)
@@ -214,16 +237,18 @@ def apply_loan(worker_id):
         return redirect('/loan-details/{}'.format(number.id), code=302)
     return render_template('apply_loan.html', id=str(uuid.uuid4()), person_id=worker_id)
 
-# pagina loan details
+# Loan details site
+# This sections displays loan details requested. This site is not active
 @app.route('/loan-details', strict_slashes=False)
 def loan_details():
-    """ Display investors subscription for a person """
+    """ Display workers loan-details """
     return render_template('loan_details.html', id=str(uuid.uuid4()))    
 
-# Inscription person-investor
+# When a client chooses Investor option, here they will be able to
+# create a new user by filling the form.
 @app.route('/users/id-person', strict_slashes=False, methods=['POST', 'GET'])
 def investor_person():
-    """ Display investors subscription for a person """
+    """ Display investors subscription for a person form """
     if request.method == "POST":
         info = request.form
         obj = User()
@@ -252,10 +277,12 @@ def investor_person():
         return redirect('/profile-investor/{}'.format(obj.id), code=302)
     return render_template('signup_naturalperson.html', id=str(uuid.uuid4()))
 
-# Inscription company investor
+# Investors company subscription form
+# Companies will be able to create their profile as investors
+# Specific companies information will be required
 @app.route('/users/id-company', strict_slashes=False, methods=['POST', 'GET'])
 def investor_company():
-    """ Display investors subscription for a company """
+    """ Display investors subscription for a company form """
     if request.method == "POST":
         info = request.form
         print("hola, cómo estás?")
@@ -290,36 +317,40 @@ def investor_company():
         return redirect('/profile-investor/{}'.format(obj.id), code=302)
     return render_template('signup_company.html', id=str(uuid.uuid4()))
 
-# pagina pricipal investor
+# Main investors profile page
 @app.route('/profile-investor/<investor_id>', strict_slashes=False)
 def profile_investor(investor_id):
-    """ Display investors subscription for a person """
+    """ Display investors profile, status, investment, edit profile, add bank details """
     return render_template('profile_investor.html', id=str(uuid.uuid4()))
 
 
-# edit porfile investor.
+# Investors edit profile form
 @app.route('/edit-profile', strict_slashes=False)
 def edit_profile():
-    """ Display investors subscription for a person """
+    """ Display investors edit profile form """
     return render_template('edit_profile.html', id=str(uuid.uuid4()))
 
-# pagina investment investor.
+# Investors investment form
 @app.route('/investment', strict_slashes=False)
 def investment():
-    """ Display investors subscription for a person """
+    """ Display investors investment form """
     return render_template('investment.html', id=str(uuid.uuid4()))
 
-# add bank details.
+# Investors add bank details form when adding new bank accounts
 @app.route('/bank-details', strict_slashes=False)
 def bank_details():
-    """ Display investors subscription for a person """
+    """ Display bank details form """
     return render_template('bank_details.html', id=str(uuid.uuid4()))
 
+# Test Deployment Strategy for adding new features or trying out new ones.
 @app.route('/tests', strict_slashes=False)
 def tests():
-    """ Display tests """
+    """ Display tests
+    Tests was made to make tests before adding any new features to the code
+    as Deployment Strategy
+    """
     return render_template('tests.html', id=str(uuid.uuid4()))
   
 if __name__ == "__main__":
-    """ Main Function """
+    """ Main Function redirecting to host 0.0.0.0 and port 5000 """
     app.run(host='0.0.0.0', port=5000)
