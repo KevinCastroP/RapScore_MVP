@@ -72,6 +72,10 @@ If you want to contribute fork the repository and create a branch in your local 
 - [Rappinvest](https://github.com/AlejandroArbelaez21/final_project)
 - [HelpMePay](https://github.com/mateo-a/HelpMePay)
 
+## Screenshot
+
+![](web_static/static/images/screenshot.png)
+
 ## Data Modeling
 
 ![](web_static/static/images/modelo_entidad_relacionDB.png)
